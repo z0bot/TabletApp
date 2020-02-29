@@ -1,4 +1,5 @@
 ﻿using System;
+using TabletApp.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace TabletApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MainMenu();
         }
 
         protected override void OnStart()

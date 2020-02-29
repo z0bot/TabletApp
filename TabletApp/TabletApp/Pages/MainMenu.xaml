@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundImageSource="loginBackground"
+             x:Class="TabletApp.Pages.MainMenu">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout
+                x:Name="uxTitleButtonStack"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="3">
+                <Frame
+                    x:Name="lblLoginTitleFrame"
+                    Margin="0,50,0,30"
+                    BackgroundColor="White">
+                    <Frame.Content>
+                        <StackLayout
+                            x:Name="uxLabelStack">
+                            <Label
+                                x:Name="lblLoginTitle"
+                                LineBreakMode="WordWrap"
+                                FontSize="60"
+                                HorizontalTextAlignment="Center"
+                                Text="DIJKSTRA'S STEAK HOUSE"/>
+                            <Label
+                                x:Name="lblLoginSubTitle"
+                                FontSize="Small"
+                                HorizontalTextAlignment="Center"
+                                Text="SHORTEST PATH TO GOOD MEAT"/>
+                        </StackLayout>
+                    </Frame.Content> 
+                </Frame>
+                <Button
+                    x:Name="uxOrderButton"
+                    Margin="100,0,100,0"
+                    Padding="0,15,0,15"
+                    Text="Order Here"
+                    FontSize="40"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    CornerRadius="15"
+                    BackgroundColor="#24BF87"/>
+            </StackLayout>
+            <StackLayout
+                x:Name="uxBottomButtonStack"
+                Orientation="Horizontal"
+                Grid.Row="1"
+                Grid.Column="3"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="EndAndExpand">
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Play Game"
+                        HorizontalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
+                    <ImageButton
+                        x:Name="uxPlayButton"
+                        BackgroundColor="Transparent"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Source="playButton"/>
+                </StackLayout>
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Call Server"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        TextColor="Black"/>
+                    <ImageButton
+                        x:Name="uxAddButton"
+                        BackgroundColor="Transparent"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Source="plusButton"/>
+                </StackLayout>
+           </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>
