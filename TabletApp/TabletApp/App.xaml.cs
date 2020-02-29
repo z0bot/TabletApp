@@ -11,7 +11,7 @@ namespace TabletApp
         {
             InitializeComponent();
 
-            MainPage = new Login();
+            MainPage = new MainMenu();
         }
 
         protected override void OnStart()
