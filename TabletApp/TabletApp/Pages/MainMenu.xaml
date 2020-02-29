@@ -47,7 +47,6 @@
                         </StackLayout>
                     </Frame.Content> 
                 </Frame>
-
                 <Button
                     x:Name="uxOrderButton"
                     Margin="100,0,100,0"
@@ -59,6 +58,43 @@
                     CornerRadius="15"
                     BackgroundColor="#24BF87"/>
             </StackLayout>
+            <StackLayout
+                x:Name="uxBottomButtonStack"
+                Orientation="Horizontal"
+                Grid.Row="1"
+                Grid.Column="3"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="EndAndExpand">
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Play Game"
+                        HorizontalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
+                    <ImageButton
+                        x:Name="uxPlayButton"
+                        BackgroundColor="Transparent"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Source="playButton"/>
+                </StackLayout>
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Call Server"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        TextColor="Black"/>
+                    <ImageButton
+                        x:Name="uxAddButton"
+                        BackgroundColor="Transparent"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Source="plusButton"/>
+                </StackLayout>
+           </StackLayout>
         </Grid>
     </ContentPage.Content>
 
