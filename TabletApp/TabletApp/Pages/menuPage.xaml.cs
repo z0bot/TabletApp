@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using TabletApp;
 
 namespace TabletApp.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class menuPage : ContentPage
 	{
+        private List<Models.OrderItem> fullOrder;
+
 		public menuPage ()
 		{
 			InitializeComponent ();
@@ -30,6 +33,7 @@ namespace TabletApp.Pages
                 BackgroundImageSource = "steakOne.PNG"
             });
         }
+
         private async void mpEntreeTwo_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new menuItemPage());
