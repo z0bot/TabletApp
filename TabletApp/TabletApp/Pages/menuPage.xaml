@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImageSource="baseBackground"
+             x:Class="TabletApp.Pages.menuPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout
+                x:Name="mpEntreeList"
+                Grid.Row="0"
+                Grid.RowSpan="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="1">
+                <Label
+                    Text="Entrees"
+                    Margin="30, 30, 30, 30"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                <Label
+                    Text="Steak One"
+                    Margin="30, 0, 30, 15"
+                    FontSize="Subtitle"
+                    FontAttributes="None"
+                    TextColor="Black"/>
+                <Label
+                    Text="Steak Two"
+                    Margin="30, 0, 30, 15"
+                    FontSize="Subtitle"
+                    FontAttributes="None"
+                    TextColor="Black"/>
+                <Label
+                    Text="Steak Three"
+                    Margin="30, 0, 30, 15"
+                    FontSize="Subtitle"
+                    FontAttributes="None"
+                    TextColor="Black"/>
+            </StackLayout>
+
+            <StackLayout
+                x:Name="mpDrinkList"
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="1">
+                <Label
+                    Text="Drinks"
+                    Margin="30, 30, 30, 30"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                <Label
+                    Text="Drink One"
+                    Margin="30, 0, 30, 15"
+                    FontSize="Subtitle"
+                    FontAttributes="None"
+                    TextColor="Black"/>
+                <Label
+                    Text="Drink Two"
+                    Margin="30, 0, 30, 15"
+                    FontSize="Subtitle"
+                    FontAttributes="None"
+                    TextColor="Black"/>
+                <Label
+                    Text="Drink Two"
+                    Margin="30, 0, 30, 15"
+                    FontSize="Subtitle"
+                    FontAttributes="None"
+                    TextColor="Black"/>
+            </StackLayout>
+
+            <StackLayout
+                x:Name="mpSideList"
+                Grid.Row="3"
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="1">
+                <Label
+                    Text="Sides"
+                    Margin="30, 30, 30, 30"
+                    FontSize="Medium"
+                    FontAttributes="Bold"
+                    TextColor="Black"/>
+                <Label
+                    Text="Side One"
+                    Margin="30, 0, 30, 15"
+                    FontSize="Subtitle"
+                    FontAttributes="None"
+                    TextColor="Black"/>
+                <Label
+                    Text="Side Two"
+                    Margin="30, 0, 30, 15"
+                    FontSize="Subtitle"
+                    FontAttributes="None"
+                    TextColor="Black"/>
+                <Label
+                    Text="Side Two"
+                    Margin="30, 0, 30, 15"
+                    FontSize="Subtitle"
+                    FontAttributes="None"
+                    TextColor="Black"/>
+            </StackLayout>
+
+            <StackLayout
+                x:Name="mpOrderConfirmation"
+                Orientation="Horizontal"
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                VerticalOptions="End"
+                Margin="15, 0, 0, 15">
+                <StackLayout
+                    Spacing="0">
+                    <Button
+                        x:Name="mpFinishOrderButton"
+                        Text="Finish Order"
+                        HeightRequest="75"
+                        WidthRequest="125"
+                        BackgroundColor="LightGray"/>
+                </StackLayout>
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Total: $0.00"
+                        Margin="5, 25, 5, 25"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout
+                x:Name="mpButtonBottomStack"
+                Orientation="Horizontal"
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="EndAndExpand"
+                Margin="0, 0, 15, 15">
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Refill"
+                        HorizontalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
+                    <ImageButton
+                        x:Name="mpRefillButton"
+                        BackgroundColor="Transparent"
+                        HeightRequest="75"
+                        WidthRequest="75"
+                        Source="plusButton"/>
+                </StackLayout>
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Call Server"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        TextColor="Black"/>
+                    <ImageButton
+                        x:Name="mpCallServerButton"
+                        BackgroundColor="Transparent"
+                        HeightRequest="75"
+                        WidthRequest="75"
+                        Source="plusButton"/>
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
