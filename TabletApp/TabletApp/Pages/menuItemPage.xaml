@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImageSource="baseBackground"
+             x:Class="TabletApp.Pages.menuItemPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout
+                x:Name="miMenuData"
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Label
+                    x:Name="miItemTitle"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    VerticalTextAlignment="Center"
+                    Text="MENU ITEM TITLE"/>
+                <Label
+                    x:Name="miItemDescription"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    VerticalTextAlignment="Center"
+                    Text="MENU ITEM DESCRIPTION"/>
+            </StackLayout>
+
+            <StackLayout
+                x:Name="miOrderAddition"
+                Orientation="Horizontal"
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                VerticalOptions="End"
+                Margin="15, 0, 0, 15">
+                <StackLayout
+                    Spacing="0">
+                    <Button
+                        x:Name="mpAddToOrder"
+                        Text="Add To Order"
+                        HeightRequest="75"
+                        WidthRequest="125"
+                        BackgroundColor="LightGray"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout
+                x:Name="mpButtonBottomStack"
+                Orientation="Horizontal"
+                Grid.Row="4"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="EndAndExpand"
+                Margin="0, 0, 15, 15">
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Refill"
+                        HorizontalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        TextColor="Black"/>
+                    <ImageButton
+                        x:Name="mpRefillButton"
+                        BackgroundColor="Transparent"
+                        HeightRequest="75"
+                        WidthRequest="75"
+                        Source="plusButton"/>
+                </StackLayout>
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Call Server"
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        TextColor="Black"/>
+                    <ImageButton
+                        x:Name="mpCallServerButton"
+                        BackgroundColor="Transparent"
+                        HeightRequest="75"
+                        WidthRequest="75"
+                        Source="plusButton"/>
+                </StackLayout>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

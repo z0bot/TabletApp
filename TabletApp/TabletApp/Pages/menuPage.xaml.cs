@@ -16,9 +16,24 @@ namespace TabletApp.Pages
 		{
 			InitializeComponent ();
 
+            mpEntreeOne.Clicked += mpEntreeOne_Clicked;
+            mpEntreeTwo.Clicked += mpEntreeTwo_Clicked;
+
             mpRefillButton.Clicked += mpRefillButton_Clicked;
             mpCallServerButton.Clicked += mpCallServerButton_Clicked;
 		}
+
+        private async void mpEntreeOne_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new menuItemPage("STREET BUNG", "A lot of Meat")
+            {
+                BackgroundImageSource = "steakOne.PNG"
+            });
+        }
+        private async void mpEntreeTwo_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new menuItemPage());
+        }
 
         private async void mpRefillButton_Clicked(object sender, EventArgs e)
         {
