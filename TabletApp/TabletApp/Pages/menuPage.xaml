@@ -159,6 +159,7 @@
                 <StackLayout
                     Spacing="0">
                     <Label
+                        x:Name="mpTotalAmount"
                         Text="Total: $0.00"
                         Margin="5, 25, 5, 25"/>
                 </StackLayout>

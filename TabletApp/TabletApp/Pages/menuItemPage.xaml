@@ -47,7 +47,7 @@
                 <StackLayout
                     Spacing="0">
                     <Button
-                        x:Name="mpAddToOrder"
+                        x:Name="miAddToOrder"
                         Text="Add To Order"
                         HeightRequest="75"
                         WidthRequest="125"
