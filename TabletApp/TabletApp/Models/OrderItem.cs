@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TabletApp.Models
 {
-    class OrderItem
+    public class OrderItem
     {
         public enum orderType {NONE, ENTREE, DRINK, SIDE };
 

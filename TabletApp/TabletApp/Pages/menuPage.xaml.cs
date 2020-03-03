@@ -13,31 +13,37 @@ namespace TabletApp.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class menuPage : ContentPage
 	{
-        private List<Models.OrderItem> fullOrder;
+        public static Stack<Models.OrderItem> fullOrder;
+        public static bool newItemAdded = false;
 
 		public menuPage ()
 		{
 			InitializeComponent ();
 
+            fullOrder = new Stack<Models.OrderItem>();
+
             //Entrees
             mpEntreeOne.Clicked += mpEntreeOne_Clicked;
-            mpEntreeTwo.Clicked += mpEntreeTwo_Clicked;
-            mpEntreeThree.Clicked += mpEntreeThree_Clicked;
-            mpEntreeFour.Clicked += mpEntreeFour_Clicked;
+            //mpEntreeTwo.Clicked += mpEntreeTwo_Clicked;
+            //mpEntreeThree.Clicked += mpEntreeThree_Clicked;
+            //mpEntreeFour.Clicked += mpEntreeFour_Clicked;
 
             //Drinks
-            mpDrinkOne.Clicked += mpDrinkOne_Clicked;
-            mpDrinkTwo.Clicked += mpDrinkTwo_Clicked;
-            mpDrinkThree.Clicked += mpDrinkThree_Clicked;
+            //mpDrinkOne.Clicked += mpDrinkOne_Clicked;
+            //mpDrinkTwo.Clicked += mpDrinkTwo_Clicked;
+            //mpDrinkThree.Clicked += mpDrinkThree_Clicked;
 
             //Sides
-            mpSideOne.Clicked += mpSidesOne_Clicked;
-            mpSideTwo.Clicked += mpSidesTwo_Clicked;
-            mpSideThree.Clicked += mpSidesThree_Clicked;
+            //mpSideOne.Clicked += mpSidesOne_Clicked;
+            //mpSideTwo.Clicked += mpSidesTwo_Clicked;
+            //mpSideThree.Clicked += mpSidesThree_Clicked;
 
             //Bottom Buttons
-            mpRefillButton.Clicked += mpRefillButton_Clicked;
-            mpCallServerButton.Clicked += mpCallServerButton_Clicked;
+            //mpRefillButton.Clicked += mpRefillButton_Clicked;
+            //mpCallServerButton.Clicked += mpCallServerButton_Clicked;
+
+            //View Order
+            mpViewOrderButton.Clicked += mpViewOrderButton_Clicked; 
 		}
 
         //Entrees
@@ -47,6 +53,9 @@ namespace TabletApp.Pages
             {
                 BackgroundImageSource = "steakOne.PNG"
             });
+
+            if (newItemAdded) mpTotalAmount.Text = "Total = $" + fullOrder.Peek().price;
+            newItemAdded = false;
         }
 
         private async void mpEntreeTwo_Clicked(object sender, EventArgs e)
@@ -105,6 +114,12 @@ namespace TabletApp.Pages
         private async void mpCallServerButton_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Server Summoned", "Pray to your god while you can", "Run");
+        }
+
+        //View Order
+        private async void mpViewOrderButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new fullOrderPage(fullOrder));
         }
     }
 }
