@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using TabletApp;
+using TabletApp.Models;
 
 namespace TabletApp.Pages
 {
@@ -14,13 +14,13 @@ namespace TabletApp.Pages
 	public partial class menuPage : ContentPage
 	{
         public static Stack<Models.OrderItem> fullOrder;
-        public static bool newItemAdded = false;
+        private float total = 0;
 
 		public menuPage ()
 		{
 			InitializeComponent ();
 
-            fullOrder = new Stack<Models.OrderItem>();
+            fullOrder = new Stack<OrderItem>();
 
             //Entrees
             mpEntreeOne.Clicked += mpEntreeOne_Clicked;
@@ -43,7 +43,7 @@ namespace TabletApp.Pages
             //mpCallServerButton.Clicked += mpCallServerButton_Clicked;
 
             //View Order
-            mpViewOrderButton.Clicked += mpViewOrderButton_Clicked; 
+            mpViewOrderButton.Clicked += mpViewOrderButton_Clicked;
 		}
 
         //Entrees
@@ -54,8 +54,13 @@ namespace TabletApp.Pages
                 BackgroundImageSource = "steakOne.PNG"
             });
 
-            if (newItemAdded) mpTotalAmount.Text = "Total = $" + fullOrder.Peek().price;
-            newItemAdded = false;
+            total = 0f;
+            foreach (OrderItem x in fullOrder)
+            {
+                total += x.price;
+            }
+
+            mpViewOrderButton.Text = "TOTAL: $" + total;
         }
 
         private async void mpEntreeTwo_Clicked(object sender, EventArgs e)

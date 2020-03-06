@@ -48,7 +48,6 @@ namespace TabletApp.Pages
         private async void miAddToOrder_Clicked(object sender, EventArgs e)
         {
             menuPage.fullOrder.Push(newItem);
-            menuPage.newItemAdded = true;
 
             await DisplayAlert("Add Item to Order", "Item Sent", "Confirm");
             await Navigation.PopAsync();
