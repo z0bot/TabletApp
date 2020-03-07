@@ -14,6 +14,8 @@ namespace TabletApp.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class fullOrderPage : ContentPage
 	{
+        private float price = 0f;
+
 		public fullOrderPage ()
 		{
 			InitializeComponent ();
@@ -27,9 +29,27 @@ namespace TabletApp.Pages
             {
                 foFullOrderScroll.Children.Add(new Label()
                 {
-                    Text = (x.itemName + "                            " + x.price)
+                    Text = (x.itemName + "                            " + x.price),
+                    Margin = new Thickness(30f, 10f, 30f, 10f),
+                    FontSize = 20f,
+                    TextColor = Color.Black
+                });
+
+                price += x.price;
+            }
+
+            if (order.Count == 0)
+            {
+                foFullOrderScroll.Children.Add(new Label()
+                {
+                    Text = "ORDER EMPTY",
+                    Margin = new Thickness(30f, 10f, 30f, 10f),
+                    FontSize = 20f,
+                    TextColor = Color.Black
                 });
             }
+
+            foFullOrderTotal.Text = "ORDER TOTAL: $" + price;
         }
 	}
 }

@@ -20,28 +20,28 @@ namespace TabletApp.Pages
         {
             InitializeComponent();
 
-            initialize();
+            initialize("DEFAULT", 0f);
         }
 
-        public menuItemPage (string itemTitle, string itemDescription)
+        public menuItemPage (string itemTitle, string itemDescription, float price)
 		{
             InitializeComponent();
 
             miItemTitle.Text = itemTitle;
             miItemDescription.Text = itemDescription;
 
-            initialize();
+            initialize(itemTitle, price);
 		}
 
-        private void initialize()
+        private void initialize(string itemTitle, float price)
         {
             miAddToOrder.Clicked += miAddToOrder_Clicked;
 
             newItem = new OrderItem();
 
             newItem.itemType = OrderItem.orderType.ENTREE;
-            newItem.itemName = "STEAK";
-            newItem.price = 14.99f;
+            newItem.itemName = itemTitle;
+            newItem.price = price;
             newItem.specialInstructions = "well done";
         }
 

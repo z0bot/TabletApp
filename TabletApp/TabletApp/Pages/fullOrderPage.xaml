@@ -6,9 +6,10 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -17,24 +18,41 @@
 
             <Label
                 Text="ITEM"
+                Margin="30, 10, 30, 10"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                TextColor="Black"
                 Grid.Row="0"
                 Grid.Column="0"/>
 
             <Label
                 Text="PRICE"
+                Margin="30, 10, 30, 10"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                TextColor="Black"
                 Grid.Row="0"
                 Grid.Column="1"/>
 
-            <StackLayout
-                x:Name="foFullOrderScroll"
+            <ScrollView
+                x:Name="foOrderScroll"
                 Grid.Row="1"
+                Grid.RowSpan="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2">
-            </StackLayout>
+                <StackLayout
+                    x:Name="foFullOrderScroll">
+                </StackLayout>
+            </ScrollView>
 
             <Label
+                x:Name="foFullOrderTotal"
                 Text="ORDER TOTAL: $0.00"
-                Grid.Row="2"
+                Margin="30, 10, 30, 10"
+                FontSize="Medium"
+                FontAttributes="Bold"
+                TextColor="Black"
+                Grid.Row="3"
                 Grid.Column="1"/>
         </Grid>
     </ContentPage.Content>
