@@ -6,103 +6,115 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using TabletApp;
+using TabletApp.Models;
 
 namespace TabletApp.Pages
 {
+    public class menuItem
+    {
+        public int ID;
+
+        public Button buttonInfo { get; set; }
+    }
+
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class menuPage : ContentPage
 	{
         public static Stack<Models.OrderItem> fullOrder;
-        public static bool newItemAdded = false;
+
+        public Stack<menuItem> entrees;
+        public Stack<menuItem> drinks;
+        public Stack<menuItem> sides;
 
 		public menuPage ()
 		{
 			InitializeComponent ();
 
-            fullOrder = new Stack<Models.OrderItem>();
+            fullOrder = new Stack<OrderItem>();
 
-            //Entrees
-            mpEntreeOne.Clicked += mpEntreeOne_Clicked;
-            //mpEntreeTwo.Clicked += mpEntreeTwo_Clicked;
-            //mpEntreeThree.Clicked += mpEntreeThree_Clicked;
-            //mpEntreeFour.Clicked += mpEntreeFour_Clicked;
+            entrees = new Stack<menuItem>();
+            drinks = new Stack<menuItem>();
+            sides = new Stack<menuItem>();
 
-            //Drinks
-            //mpDrinkOne.Clicked += mpDrinkOne_Clicked;
-            //mpDrinkTwo.Clicked += mpDrinkTwo_Clicked;
-            //mpDrinkThree.Clicked += mpDrinkThree_Clicked;
+            int entreeAmt = 4;
+            int drinkAmt = 3;
+            int sideAmt = 3;
 
-            //Sides
-            //mpSideOne.Clicked += mpSidesOne_Clicked;
-            //mpSideTwo.Clicked += mpSidesTwo_Clicked;
-            //mpSideThree.Clicked += mpSidesThree_Clicked;
-
-            //Bottom Buttons
-            //mpRefillButton.Clicked += mpRefillButton_Clicked;
-            //mpCallServerButton.Clicked += mpCallServerButton_Clicked;
-
-            //View Order
-            mpViewOrderButton.Clicked += mpViewOrderButton_Clicked; 
-		}
-
-        //Entrees
-        private async void mpEntreeOne_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage("STREET BUNG", "A lot of Meat")
+            for (int i = 0; i < entreeAmt; i++)
             {
-                BackgroundImageSource = "steakOne.PNG"
+                menuItem newItem = new menuItem();
+
+                mpEntreesScroll.Children.Add(newItem.buttonInfo = (new Button()
+                {
+                    Text = "NEW ENTREE",
+                    Margin = new Thickness(30f, 0f, 30f, 15f),
+                    FontSize = 15f,
+                    FontAttributes = FontAttributes.None,
+                    WidthRequest = 100f,
+                    TextColor = Color.Black,
+                }));
+
+                newItem.ID = i;
+
+                newItem.buttonInfo.Clicked += async (sender, args) => await Navigation.PushAsync(new menuItemPage("Entree", "Good ass Steak", 14.99f) { BackgroundImageSource = "steakOne" });
+
+                entrees.Push(newItem);
+            }
+
+            for (int i = 0; i < drinkAmt; i++)
+            {
+                menuItem newItem = new menuItem();
+
+                mpDrinkSideScroll.Children.Add(newItem.buttonInfo = (new Button()
+                {
+                    Text = "NEW DRINK",
+                    Margin = new Thickness(30f, 0f, 30f, 15f),
+                    FontSize = 15f,
+                    FontAttributes = FontAttributes.None,
+                    WidthRequest = 100f,
+                    TextColor = Color.Black,
+                }));
+
+                newItem.ID = i;
+
+                newItem.buttonInfo.Clicked += async (sender, args) => await Navigation.PushAsync(new menuItemPage("Drink", "Smooth ass Drinks", 3.99f) { BackgroundImageSource = "drinksOne" });
+
+                drinks.Push(newItem);
+            }
+
+            mpDrinkSideScroll.Children.Add(new Label()
+            {
+                Text = "Sides",
+                Margin = new Thickness(30f, 30f, 30f, 30f),
+                FontSize = 20f,
+                FontAttributes = FontAttributes.Bold,
+                TextColor = Color.Black,
             });
 
-            if (newItemAdded) mpTotalAmount.Text = "Total = $" + fullOrder.Peek().price;
-            newItemAdded = false;
-        }
+            for (int i = 0; i < sideAmt; i++)
+            {
+                menuItem newItem = new menuItem();
 
-        private async void mpEntreeTwo_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage());
-        }
+                mpDrinkSideScroll.Children.Add(newItem.buttonInfo = (new Button()
+                {
+                    Text = "NEW SIDE",
+                    Margin = new Thickness(30f, 0f, 30f, 15f),
+                    FontSize = 15f,
+                    FontAttributes = FontAttributes.None,
+                    WidthRequest = 100f,
+                    TextColor = Color.Black,
+                }));
 
-        private async void mpEntreeThree_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage());
-        }
+                newItem.ID = i;
 
-        private async void mpEntreeFour_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage());
-        }
+                newItem.buttonInfo.Clicked += async (sender, args) => await Navigation.PushAsync(new menuItemPage("Side", "Crunchy ass Sides", 2.99f) { BackgroundImageSource = "sidesOne" });
 
-        //Drinks
-        private async void mpDrinkOne_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage());
-        }
+                sides.Push(newItem);
+            }
 
-        private async void mpDrinkTwo_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage());
-        }
-
-        private async void mpDrinkThree_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage());
-        }
-
-        //Sides
-        private async void mpSidesOne_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage());
-        }
-
-        private async void mpSidesTwo_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage());
-        }
-
-        private async void mpSidesThree_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new menuItemPage());
+            mpRefillButton.Clicked += mpRefillButton_Clicked;
+            mpCallServerButton.Clicked += mpCallServerButton_Clicked;
+            mpViewOrderButton.Clicked += mpViewOrderButton_Clicked;
         }
 
         //Bottom Buttons
