@@ -52,6 +52,12 @@
                 FontSize="Medium"
                 FontAttributes="Bold"
                 TextColor="Black"
+                Grid.Row="3"/>
+            <Button
+                x:Name="foPayTicket"
+                Text="Pay Ticket"
+                FontSize="Medium"
+                TextColor="Black"
                 Grid.Row="3"
                 Grid.Column="1"/>
         </Grid>
