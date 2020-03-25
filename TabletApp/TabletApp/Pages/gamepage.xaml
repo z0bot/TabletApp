@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundImageSource="baseBackground"
+             x:Class="TabletApp.Pages.gamepage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Grid.Column="1"
+                Grid.ColumnSpan="3">
+                <Frame
+                    x:Name="Games"
+                    Margin="0,50,0,30"
+                    BackgroundColor="#24BF87">
+                    <Frame.Content>
+                        <StackLayout
+                            x:Name="LabelGames">
+                            <Label
+                                x:Name="lblLoginTitle"
+                                LineBreakMode="WordWrap"
+                                FontSize="40"
+                                 FontAttributes="Bold"
+                                HorizontalTextAlignment="Center"
+                                Text="Games"
+                                TextColor="White"/>
+                        </StackLayout>
+                    </Frame.Content>
+                </Frame>
+                <Button
+                    x:Name="Game1Button"
+                    Margin="100,0,100,0"
+                    Padding="0,15,0,15"
+                    Text="Snake"
+                    FontSize="40"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    Clicked="Game1Clicked"
+                    CornerRadius="15"
+                    BackgroundColor="#24BF87"/>
+                <Button
+                    x:Name="Game2Button"
+                    Margin="100,0,100,0"
+                    Padding="0,15,0,15"
+                    Text="MemeCraft"
+                    FontSize="40"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    Clicked="Game2Clicked"
+                    CornerRadius="15"
+                    BackgroundColor="#24BF87"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

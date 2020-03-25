@@ -33,7 +33,7 @@ namespace TabletApp.Pages
 
         private async void UxPlayButton_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("You're a gamer", "Just kidding, this doesn't do anything yet", "Damn it");
+            await Navigation.PushAsync(new gamepage());
         }
     }
 }
