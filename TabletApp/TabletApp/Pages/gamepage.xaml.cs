@@ -18,11 +18,11 @@ namespace TabletApp.Pages
         }
         private async void Game1Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("game 1 info", "Tis no game here", "rip");
+            await Navigation.PushAsync(new MemoryGame());
         }
         private async void Game2Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("game 2 info", "Tis no game here", "rip");
+            await Navigation.PushAsync(new TickTack());
         }
     }
 }

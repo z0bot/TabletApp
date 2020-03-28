@@ -4,8 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             BackgroundImageSource="baseBackground"
-             x:Class="TabletApp.Pages.gamepage">
+             x:Class="TabletApp.Pages.Uwin">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -35,39 +34,28 @@
                         <StackLayout
                             x:Name="LabelGames">
                             <Label
-                                x:Name="GamesFram"
+                                x:Name="Win"
                                 LineBreakMode="WordWrap"
                                 FontSize="40"
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="Center"
-                                Text="Games"
+                                Text="You Win!"
                                 TextColor="White"/>
                         </StackLayout>
                     </Frame.Content>
                 </Frame>
                 <Button
-                    x:Name="Game1Button"
+                    x:Name="Return"
                     Margin="100,0,100,0"
                     Padding="0,15,0,15"
-                    Text="Memory Game"
+                    Text="Return To Games Menu"
                     FontSize="40"
                     FontAttributes="Bold"
                     TextColor="White"
-                    Clicked="Game1Clicked"
+                    Clicked="ReturnClicked"
                     CornerRadius="15"
                     BackgroundColor="#24BF87"/>
-                <Button
-                    x:Name="Game2Button"
-                    Margin="100,0,100,0"
-                    Padding="0,15,0,15"
-                    Text="Tic Tac Toe"
-                    FontSize="40"
-                    FontAttributes="Bold"
-                    TextColor="White"
-                    Clicked="Game2Clicked"
-                    CornerRadius="15"
-                    BackgroundColor="#24BF87"/>
-            </StackLayout>
-        </Grid>
+                </StackLayout>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>
