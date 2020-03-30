@@ -92,6 +92,14 @@ namespace TabletApp.Pages
             }
             return false;
         }
+        private async void ReturnToGame(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new gamepage());
+        }
+        private async void ReturnToMain(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainMenu());
+        }
 
     }
 }
