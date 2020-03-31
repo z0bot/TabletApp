@@ -14,6 +14,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
               
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -23,8 +24,28 @@
                 <ColumnDefinition Width="*"/>
 
             </Grid.ColumnDefinitions>
-            
-          
+            <Button
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                x:Name="ReturnHome"
+                BackgroundColor="#24BF87"
+                Text="Return To Games"
+                TextColor="White"
+                Font="30"
+                Clicked="ReturnToGame"/>
+            <Button
+                Grid.Row="4"
+                Grid.Column="2"
+                Grid.ColumnSpan="2"
+                x:Name="ReturnMenu"
+                BackgroundColor="#24BF87"
+                Text="Return To Main Menu"
+                TextColor="White"
+                Font="30"
+                Clicked="ReturnToMain"/>
+
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
