@@ -58,8 +58,31 @@
                     CornerRadius="15"
                     BackgroundColor="#24BF87"/>
             </StackLayout>
+
             <StackLayout
-                x:Name="uxBottomButtonStack"
+                x:Name="uxBottomLeftButtonStack"
+                Orientation="Horizontal"
+                Grid.Row="1"
+                Grid.ColumnSpan="1"
+                VerticalOptions="EndAndExpand">
+                <StackLayout
+                    Spacing="0">
+                    <Label
+                        Text="Play Game"
+                        HorizontalTextAlignment="Center"
+                        FontAttributes="Bold"
+                        TextColor="White"/>
+                    <ImageButton
+                        x:Name="uxPlayButton"
+                        BackgroundColor="Transparent"
+                        HeightRequest="100"
+                        WidthRequest="100"
+                        Source="playButton"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout
+                x:Name="uxBottomRightButtonStack"
                 Orientation="Horizontal"
                 Grid.Row="1"
                 Grid.Column="3"
@@ -69,16 +92,16 @@
                 <StackLayout
                     Spacing="0">
                     <Label
-                        Text="Play Game"
+                        Text="Refill"
                         HorizontalTextAlignment="Center"
                         FontAttributes="Bold"
                         TextColor="Black"/>
                     <ImageButton
-                        x:Name="uxPlayButton"
+                        x:Name="uxRefillButton"
                         BackgroundColor="Transparent"
                         HeightRequest="100"
                         WidthRequest="100"
-                        Source="playButton"/>
+                        Source="plusButton"/>
                 </StackLayout>
                 <StackLayout
                     Spacing="0">

@@ -19,6 +19,7 @@ namespace TabletApp.Pages
             uxOrderButton.Clicked += uxOrderButton_Clicked;
             uxPlayButton.Clicked += UxPlayButton_Clicked;
             uxAddButton.Clicked += UxAddButton_Clicked;
+            uxRefillButton.Clicked += UxRefillButton_Clicked;
         }
 
         private async void uxOrderButton_Clicked(object sender, EventArgs e)
@@ -34,6 +35,11 @@ namespace TabletApp.Pages
         private async void UxPlayButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new gamepage());
+        }
+
+        private async void UxRefillButton_Clicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Refill", "Asked for refill didn't you?", "Pretty Thirsty");
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29230.47
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1022
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TabletApp.Android", "TabletApp\TabletApp.Android\TabletApp.Android.csproj", "{7CD11F7F-0A5B-4788-B342-32830A198AC3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TabletApp.iOS", "TabletApp\TabletApp.iOS\TabletApp.iOS.csproj", "{E0047C11-9AF6-48A4-8594-C6D0DA8796E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TabletApp", "TabletApp\TabletApp\TabletApp.csproj", "{8613284D-F203-4FC0-8114-9FD420B6436A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TabletApp", "TabletApp\TabletApp\TabletApp.csproj", "{8613284D-F203-4FC0-8114-9FD420B6436A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
