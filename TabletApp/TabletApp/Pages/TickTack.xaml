@@ -23,23 +23,14 @@
             <Button
                 Grid.Row="3"
                 Grid.Column="0"
-                Grid.ColumnSpan="1"
+                Grid.ColumnSpan="3"
                 x:Name="ReturnHome"
                 BackgroundColor="#24BF87"
                 Text="Return To Games"
                 TextColor="White"
                 Font="30"
                 Clicked="ReturnToGame"/>
-            <Button
-                Grid.Row="3"
-                Grid.Column="2"
-                Grid.ColumnSpan="1"
-                x:Name="ReturnMenu"
-                BackgroundColor="#24BF87"
-                Text="Return To Main Menu"
-                TextColor="White"
-                Font="30"
-                Clicked="ReturnToMain"/>
+           
 
 
         </Grid>

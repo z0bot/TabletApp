@@ -17,7 +17,8 @@ namespace TabletApp.Pages
             InitializeComponent();
         }
         private async void ReturnClicked(object sender, EventArgs e) {
-            await Navigation.PushAsync(new gamepage());
+            int temp = 1;
+            await Navigation.PushAsync(new gamepage(temp));
         }
     }
 }

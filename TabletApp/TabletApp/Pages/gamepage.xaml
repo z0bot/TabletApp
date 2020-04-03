@@ -67,6 +67,19 @@
                     Clicked="Game2Clicked"
                     CornerRadius="15"
                     BackgroundColor="#24BF87"/>
+                <Button
+                    x:Name="Home"
+                    Margin="100,0,100,0"
+                    Padding="0,15,0,15"
+                    Text="Main Menu"
+                    FontSize="40"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    Clicked="HomeClicked"
+                    CornerRadius="15"
+                    BackgroundColor="#24BF87"/>
+                    
+                  
             </StackLayout>
         </Grid>
     </ContentPage.Content>

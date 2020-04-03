@@ -122,12 +122,13 @@ namespace TabletApp.Pages
 
         }
         private async void ReturnToGame(object sender, EventArgs e) {
-            await Navigation.PushAsync(new gamepage());
+            int temp = 1;
+            await Navigation.PushAsync(new gamepage(temp)) ;
         }
-        private async void ReturnToMain(object sender, EventArgs e)
+       /* private async void ReturnToMain(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainMenu());
-        }
+        }*/
 
 
     }
