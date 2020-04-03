@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using TabletApp.Models;
+
+using Realms;
+
 namespace TabletApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -15,6 +19,8 @@ namespace TabletApp.Pages
         public MainMenu()
         {
             InitializeComponent();
+
+            RealmManager.RemoveAll<OrderList>();
 
             uxOrderButton.Clicked += uxOrderButton_Clicked;
             uxPlayButton.Clicked += UxPlayButton_Clicked;

@@ -14,44 +14,40 @@ namespace TabletApp.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class menuItemPage : ContentPage
 	{
-        private OrderItem newItem;
+        private Models.MenuItem menuItem;
 
-        public menuItemPage()
-        {
-            InitializeComponent();
-
-            initialize();
-        }
-
-        public menuItemPage (string itemTitle, string itemDescription)
+        public menuItemPage(Models.MenuItem item)
 		{
             InitializeComponent();
 
-            miItemTitle.Text = itemTitle;
-            miItemDescription.Text = itemDescription;
+            menuItem = item;
 
-            initialize();
-		}
-
-        private void initialize()
-        {
             miAddToOrder.Clicked += miAddToOrder_Clicked;
 
-            newItem = new OrderItem();
-
-            newItem.itemType = OrderItem.orderType.ENTREE;
-            newItem.itemName = "STEAK";
-            newItem.price = 14.99f;
-            newItem.specialInstructions = "well done";
+            miItemTitle.Text = menuItem.name;
+            miItemDescription.Text = menuItem.desctription;
         }
 
         private async void miAddToOrder_Clicked(object sender, EventArgs e)
         {
-            menuPage.fullOrder.Push(newItem);
-            menuPage.newItemAdded = true;
-
+            UpdateOrder();
             await DisplayAlert("Add Item to Order", "Item Sent", "Confirm");
             await Navigation.PopAsync();
+        }
+
+        private void UpdateOrder()
+        {
+            OrderList order = new OrderList();
+            
+            for (int i = 0; i < RealmManager.All<OrderList>().First().menuItems.Count(); i++)
+            {
+                order.menuItems.Add(RealmManager.All<OrderList>().First().menuItems[i]);
+            }
+
+            order.menuItems.Add(menuItem);
+
+            RealmManager.RemoveAll<OrderList>();
+            RealmManager.AddOrUpdate<OrderList>(order);
         }
     }
 }

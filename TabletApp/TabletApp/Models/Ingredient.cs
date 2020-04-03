@@ -10,7 +10,7 @@ namespace TabletApp.Models
     public class Ingredient : RealmObject
     {
         [PrimaryKey]
-        public string id { get; set; }
+        public string _id { get; set; }
         public string name { get; set; }
         public int quantity { get; set; }
 

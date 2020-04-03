@@ -24,44 +24,13 @@
                 Grid.RowSpan="4"
                 Grid.Column="0">
                 <ScrollView>
-                    <StackLayout>
+                    <StackLayout
+                        x:Name="entreeScroll">
                         <Label
                             Text="Entrees"
                             Margin="30, 30, 30, 30"
                             FontSize="Medium"
                             FontAttributes="Bold"
-                            TextColor="Black"/>
-                        <Button
-                            x:Name="mpEntreeOne"
-                            Text="Entree One"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
-                            TextColor="Black"/>
-                        <Button
-                            x:Name="mpEntreeTwo"
-                            Text="Entree Two"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
-                            TextColor="Black"/>
-                        <Button
-                            x:Name="mpEntreeThree"
-                            Text="Entree Three"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
-                            TextColor="Black"/>
-                        <Button
-                            x:Name="mpEntreeFour"
-                            Text="Entree Four"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
                             TextColor="Black"/>
                     </StackLayout>
                 </ScrollView>
@@ -74,67 +43,24 @@
                 Grid.Column="1">
                 <ScrollView>
                     <StackLayout>
-                        <Label
+                        <StackLayout
+                            x:Name="drinkScroll">
+                            <Label
                             Text="Drinks"
                             Margin="30, 30, 30, 30"
                             FontSize="Medium"
                             FontAttributes="Bold"
                             TextColor="Black"/>
-                        <Button
-                            x:Name="mpDrinkOne"
-                            Text="Drink One"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
-                            TextColor="Black"/>
-                        <Button
-                            x:Name="mpDrinkTwo"
-                            Text="Drink Two"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
-                            TextColor="Black"/>
-                        <Button
-                            x:Name="mpDrinkThree"
-                            Text="Drink Two"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
-                            TextColor="Black"/>
-
-                        <Label
+                        </StackLayout>
+                        <StackLayout
+                            x:Name="sideScroll">
+                            <Label
                             Text="Sides"
                             Margin="30, 30, 30, 30"
                             FontSize="Medium"
                             FontAttributes="Bold"
                             TextColor="Black"/>
-                        <Button
-                            x:Name="mpSideOne"
-                            Text="Side One"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
-                            TextColor="Black"/>
-                        <Button
-                            x:Name="mpSideTwo"
-                            Text="Side Two"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
-                            TextColor="Black"/>
-                        <Button
-                            x:Name="mpSideThree"
-                            Text="Side Three"
-                            Margin="30, 0, 30, 15"
-                            FontSize="Subtitle"
-                            FontAttributes="None"
-                            WidthRequest="100"
-                            TextColor="Black"/>
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
@@ -155,13 +81,6 @@
                         HeightRequest="75"
                         WidthRequest="125"
                         BackgroundColor="LightGray"/>
-                </StackLayout>
-                <StackLayout
-                    Spacing="0">
-                    <Label
-                        x:Name="mpTotalAmount"
-                        Text="Total: $0.00"
-                        Margin="5, 25, 5, 25"/>
                 </StackLayout>
             </StackLayout>
 

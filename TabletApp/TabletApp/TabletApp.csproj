@@ -10,6 +10,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="FodyWeavers.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Realm" Version="4.3.0" />
     <PackageReference Include="Realm.Fody" Version="4.3.0">
       <PrivateAssets>all</PrivateAssets>
@@ -44,9 +48,5 @@
     <EmbeddedResource Update="Pages\Uwin.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\ServiceRequests\" />
   </ItemGroup>
 </Project>

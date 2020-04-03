@@ -14,22 +14,43 @@ namespace TabletApp.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class fullOrderPage : ContentPage
 	{
+        private float priceTotal = 0;
+
 		public fullOrderPage ()
 		{
 			InitializeComponent ();
 		}
 
-        public fullOrderPage(Stack<OrderItem> order)
+        public fullOrderPage(OrderList order)
         {
             InitializeComponent();
 
-            foreach (OrderItem x in order)
+            for(int i = 0; i < order.menuItems.Count(); i++)
             {
-                foFullOrderScroll.Children.Add(new Label()
+                Models.MenuItem x = order.menuItems[i];
+
+                entreeScroll.Children.Add(new Label()
                 {
-                    Text = (x.itemName + "                            " + x.price)
+                    Text = x.name,
+                    Margin = new Thickness(30, 0, 30, 15),
+                    FontSize = 20,
+                    WidthRequest = 100,
+                    TextColor = Color.Black
                 });
+
+                priceScroll.Children.Add(new Label()
+                {
+                    Text = "$" + x.price,
+                    Margin = new Thickness(30, 0, 30, 15),
+                    FontSize = 20,
+                    WidthRequest = 100,
+                    TextColor = Color.Black
+                });
+
+                priceTotal += x.price;
             }
+
+            foOrderTotal.Text += "$" + priceTotal;
         }
 	}
 }

@@ -10,10 +10,11 @@ namespace TabletApp.Models
     public class MenuItem : RealmObject
     {
         [PrimaryKey]
-        public string id { get; set; }
+        public string _id { get; set; }
+        public IList<Ingredient> ingredients { get; }
         public string name { get; set; }
         public string picture { get; set; }
-        public string description { get; set; }
+        public string desctription { get; set; }
         public float price { get; set; }
         public string nutrition { get; set; }
         public string item_type { get; set; }
