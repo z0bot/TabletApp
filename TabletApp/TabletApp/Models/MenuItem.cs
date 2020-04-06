@@ -12,6 +12,8 @@ namespace TabletApp.Models
         [PrimaryKey]
         public string _id { get; set; }
         public IList<Ingredient> ingredients { get; }
+        public bool prepared { get; set; }
+        public string special_instruct { get; set; }
         public string name { get; set; }
         public string picture { get; set; }
         public string desctription { get; set; }

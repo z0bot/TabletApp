@@ -50,6 +50,7 @@ namespace TabletApp.Pages
                 newButton.Clicked += async (sender, args) => await Navigation.PushAsync(new menuItemPage(currItem));
 
                 if (currItem.category == "Entree") entreeScroll.Children.Add(newButton);
+                else if (currItem.category == "Appetizers") appScroll.Children.Add(newButton);
                 else if (currItem.category == "Drink") drinkScroll.Children.Add(newButton);
                 else if (currItem.category == "Side") sideScroll.Children.Add(newButton);
             }

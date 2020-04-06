@@ -24,14 +24,25 @@
                 Grid.RowSpan="4"
                 Grid.Column="0">
                 <ScrollView>
-                    <StackLayout
-                        x:Name="entreeScroll">
-                        <Label
-                            Text="Entrees"
-                            Margin="30, 30, 30, 30"
-                            FontSize="Medium"
-                            FontAttributes="Bold"
-                            TextColor="Black"/>
+                    <StackLayout>
+                        <StackLayout
+                            x:Name="appScroll">
+                            <Label
+                                Text="Appetizers"
+                                Margin="30, 30, 30, 30"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout
+                            x:Name="entreeScroll">
+                            <Label
+                                Text="Entrees"
+                                Margin="30, 30, 30, 30"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
