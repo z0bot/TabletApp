@@ -16,16 +16,46 @@ namespace TabletApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainMenu : ContentPage
     {
+        public static MainMenu _instance;
+
         public MainMenu()
         {
             InitializeComponent();
 
+            _instance = this;
+
             RealmManager.RemoveAll<OrderList>();
+            RealmManager.RemoveAll<OrderedList>();
+            RealmManager.RemoveAll<TableManager>();
+
+            RealmManager.AddOrUpdate<TableManager>(new TableManager
+            {
+                table = "Table 19"
+            });
 
             uxOrderButton.Clicked += uxOrderButton_Clicked;
             uxPlayButton.Clicked += UxPlayButton_Clicked;
-            uxAddButton.Clicked += UxAddButton_Clicked;
-            uxRefillButton.Clicked += UxRefillButton_Clicked;
+            uxCallServerButton.Clicked += uxCallServerButton_Clicked;
+            uxRefillButton.Clicked += uxRefillButton_Clicked;
+        }
+
+        public static void OnReturn()
+        {
+            if (RealmManager.All<OrderedList>().Count() > 0)
+            {
+                _instance.uxCheckOutButton.BackgroundColor = new Color(0x24BF87);
+                _instance.uxCheckOutButton.Clicked += uxCheckOutButton_Clicked;
+            }
+            else
+            {
+                _instance.uxCheckOutButton.BackgroundColor = new Color(0x222222);
+                _instance.uxCheckOutButton.Clicked -= uxCheckOutButton_Clicked;
+            }
+        }
+
+        private static async void uxCheckOutButton_Clicked(object sender, EventArgs e)
+        {
+            await _instance.Navigation.PushAsync(new CheckoutPage(RealmManager.All<OrderedList>().First()));
         }
 
         private async void uxOrderButton_Clicked(object sender, EventArgs e)
@@ -33,19 +63,25 @@ namespace TabletApp.Pages
             await Navigation.PushAsync(new menuPage());
         }
 
-        private async void UxAddButton_Clicked(object sender, EventArgs e)
-        {
-            await DisplayAlert("No Servers", "How'd you even get in here, we're not even open yet", "I broke in");
-        }
-
         private async void UxPlayButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new gamepage());
         }
 
-        private async void UxRefillButton_Clicked(object sender, EventArgs e)
+        private async void uxRefillButton_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Refill", "Asked for refill didn't you?", "Pretty Thirsty");
+            bool response = await NotificationManager.SendNotification("Refill");
+
+            if (!response) await DisplayAlert("Refill Request Failed", "", "Ok");
+            else await DisplayAlert("Refill Request Sent", "Server on their way", "Ok");
+        }
+
+        private async void uxCallServerButton_Clicked(object sender, EventArgs e)
+        {
+            bool response = await NotificationManager.SendNotification("Help");
+
+            if (!response) await DisplayAlert("Help Request Failed", "", "Ok");
+            else await DisplayAlert("Help Request Sent", "Server on their way", "Ok");
         }
     }
 }

@@ -57,8 +57,28 @@
             <Label
                 x:Name="foOrderTotal"
                 Text="ORDER TOTAL: "
+                Margin="15, 15, 15, 15"
                 Grid.Row="5"
-                Grid.Column="1"/>
+                Grid.Column="0"/>
+
+            <StackLayout
+                x:Name="mpOrderConfirmation"
+                Orientation="Horizontal"
+                Grid.Row="5"
+                Grid.RowSpan="1"
+                Grid.Column="1"
+                VerticalOptions="End"
+                Margin="15, 15, 15, 15">
+                <StackLayout
+                    Spacing="0">
+                    <Button
+                        x:Name="foSubmitFoodButton"
+                        Text="Submit Order"
+                        HeightRequest="75"
+                        WidthRequest="125"
+                        BackgroundColor="LightGray"/>
+                </StackLayout>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

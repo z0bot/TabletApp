@@ -26,9 +26,10 @@ namespace TabletApp.Pages
             miAddToOrder.Clicked += miAddToOrder_Clicked;
 
             mpRefillButton.Clicked += mpRefillButton_Clicked;
+            mpCallServerButton.Clicked += mpCallServerButton_Clicked;
 
             miItemTitle.Text = menuItem.name;
-            miItemDescription.Text = menuItem.desctription;
+            miItemDescription.Text = menuItem.description;
         }
 
         private async void miAddToOrder_Clicked(object sender, EventArgs e)
@@ -40,18 +41,20 @@ namespace TabletApp.Pages
 
         private async void mpRefillButton_Clicked(object sender, EventArgs e)
         {
-            bool response = await PutNotificationRequest.SendPutNotificationRequest(new Notification()
-            {
-                _id = "Test7481294791",
-                employee_id = "Test78217418401",
-                sender = "Tablet Test",
-                notificationType = "Refill"
-            });
+            bool response = await NotificationManager.SendNotification("Refill");
 
             if (!response) await DisplayAlert("Refill Request Failed", "", "Ok");
             else await DisplayAlert("Refill Request Sent", "Server on their way", "Ok");
         }
- 
+
+        private async void mpCallServerButton_Clicked(object sender, EventArgs e)
+        {
+            bool response = await NotificationManager.SendNotification("Help");
+
+            if (!response) await DisplayAlert("Help Request Failed", "", "Ok");
+            else await DisplayAlert("Help Request Sent", "Server on their way", "Ok");
+        }
+
         private void UpdateOrder()
         {
             OrderList order = new OrderList();

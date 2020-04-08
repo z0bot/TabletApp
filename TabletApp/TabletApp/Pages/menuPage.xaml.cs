@@ -24,6 +24,9 @@ namespace TabletApp.Pages
             if (RealmManager.All<OrderList>().Count() == 0) RealmManager.AddOrUpdate<OrderList>(new OrderList());
 
             mpViewOrderButton.Clicked += mpViewOrderButton_Clicked;
+
+            mpRefillButton.Clicked += mpRefillButton_Clicked;
+            mpCallServerButton.Clicked += mpCallServerButton_Clicked;
         }
 
         async void RequestMenuItems()
@@ -59,6 +62,22 @@ namespace TabletApp.Pages
         private async void mpViewOrderButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new fullOrderPage(RealmManager.All<OrderList>().First()));
+        }
+
+        private async void mpRefillButton_Clicked(object sender, EventArgs e)
+        {
+            bool response = await NotificationManager.SendNotification("Refill");
+
+            if (!response) await DisplayAlert("Refill Request Failed", "", "Ok");
+            else await DisplayAlert("Refill Request Sent", "Server on their way", "Ok");
+        }
+
+        private async void mpCallServerButton_Clicked(object sender, EventArgs e)
+        {
+            bool response = await NotificationManager.SendNotification("Help");
+
+            if (!response) await DisplayAlert("Help Request Failed", "", "Ok");
+            else await DisplayAlert("Help Request Sent", "Server on their way", "Ok");
         }
     }
 }

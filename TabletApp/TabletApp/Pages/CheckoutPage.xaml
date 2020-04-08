@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImageSource="baseBackground"
+             x:Class="TabletApp.Pages.CheckoutPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+           
+
+            <StackLayout
+                x:Name="cpOrder"
+                Grid.RowSpan="3"
+                Grid.Column="1">
+                <ScrollView>
+                    <StackLayout
+                        x:Name="cpOrderScroll">
+                            <Label
+                                x:Name="cpFullOrderLabel"
+                                Text="FUll ORDER"
+                                Margin="30, 30, 30, 30"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

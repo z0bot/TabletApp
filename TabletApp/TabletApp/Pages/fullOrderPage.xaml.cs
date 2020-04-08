@@ -16,14 +16,15 @@ namespace TabletApp.Pages
 	{
         private float priceTotal = 0;
 
-		public fullOrderPage ()
-		{
-			InitializeComponent ();
-		}
+        private OrderList fullOrder;
 
         public fullOrderPage(OrderList order)
         {
             InitializeComponent();
+
+            fullOrder = new OrderList();
+
+            foSubmitFoodButton.Clicked += foSubmitFoodButton_Clicked;
 
             for(int i = 0; i < order.menuItems.Count(); i++)
             {
@@ -48,9 +49,31 @@ namespace TabletApp.Pages
                 });
 
                 priceTotal += x.price;
+
+                fullOrder.menuItems.Add(x);
             }
 
             foOrderTotal.Text += "$" + priceTotal;
+        }
+
+        private async void foSubmitFoodButton_Clicked(object sender, EventArgs e)
+        {
+            OrderedList tempList = new OrderedList();
+
+            if (RealmManager.All<OrderedList>().Count() > 0)
+                for (int i = 0; i < RealmManager.All<OrderedList>().First().menuItems.Count(); i++)
+                    tempList.menuItems.Add(RealmManager.All<OrderedList>().First().menuItems[i]);
+
+            for (int i = 0; i < fullOrder.menuItems.Count(); i++)
+                tempList.menuItems.Add(fullOrder.menuItems[i]);
+
+            RealmManager.RemoveAll<OrderedList>();
+            RealmManager.RemoveAll<OrderList>();
+
+            RealmManager.AddOrUpdate<OrderedList>(tempList);
+
+            MainMenu.OnReturn();
+            await Navigation.PopAsync();
         }
 	}
 }
