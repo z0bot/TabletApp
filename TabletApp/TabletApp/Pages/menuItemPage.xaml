@@ -49,9 +49,12 @@
                     <Button
                         x:Name="miAddToOrder"
                         Text="Add To Order"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="15"
                         HeightRequest="75"
                         WidthRequest="125"
-                        BackgroundColor="LightGray"/>
+                        BackgroundColor="#24BF87"/>
                 </StackLayout>
             </StackLayout>
 

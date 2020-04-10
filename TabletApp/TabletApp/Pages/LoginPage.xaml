@@ -22,10 +22,24 @@
                 Grid.Row="1"
                 Grid.Column="1">
                 <Entry
-                    x:Name="lpTableEntry"/>
+                    x:Name="lpTableEntry"
+                    
+                    FontSize="40"
+                    
+                    />
+                    
                 <Button
                     x:Name="lpTableButton"
-                    Text="Login"/>
+                    Margin="100,0,100,0"
+                    Padding="0,15,0,15"
+                    Text="Login"
+                    FontSize="40"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    CornerRadius="15"
+                    BackgroundColor="#24BF87"/>
+                    
+                   
             </StackLayout>
         </Grid>
     </ContentPage.Content>

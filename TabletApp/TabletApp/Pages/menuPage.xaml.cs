@@ -47,7 +47,10 @@ namespace TabletApp.Pages
                     Margin = new Thickness(30, 0, 30, 15),
                     FontSize = 20,
                     WidthRequest = 100,
-                    TextColor = Color.Black
+                    FontAttributes = FontAttributes.Bold,
+                    TextColor = Xamarin.Forms.Color.White,
+                    CornerRadius = 15,
+                    BackgroundColor = Xamarin.Forms.Color.FromHex("#24BF87"),
                 };
 
                 newButton.Clicked += async (sender, args) => await Navigation.PushAsync(new menuItemPage(currItem));

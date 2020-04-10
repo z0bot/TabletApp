@@ -89,9 +89,12 @@
                     <Button
                         x:Name="mpViewOrderButton"
                         Text="View Order"
+                        TextColor="White"
+                        CornerRadius="15"
+                        FontAttributes="Bold"
                         HeightRequest="75"
                         WidthRequest="125"
-                        BackgroundColor="LightGray"/>
+                        BackgroundColor="#24BF87"/>
                 </StackLayout>
             </StackLayout>
 

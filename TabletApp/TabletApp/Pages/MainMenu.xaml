@@ -37,7 +37,7 @@
                             <Label
                                 x:Name="lblLoginTitle"
                                 LineBreakMode="WordWrap"
-                                FontSize="60"
+                                FontSize="55"
                                 HorizontalTextAlignment="Center"
                                 Text="DIJKSTRA'S STEAK HOUSE"/>
                             <Label
@@ -53,7 +53,7 @@
                     Margin="100,0,100,0"
                     Padding="0,15,0,15"
                     Text="Order Here"
-                    FontSize="40"
+                    FontSize="35"
                     FontAttributes="Bold"
                     TextColor="White"
                     CornerRadius="15"
@@ -63,7 +63,7 @@
                     Margin="100,0,100,0"
                     Padding="0,15,0,15"
                     Text="Pay Ticket"
-                    FontSize="40"
+                    FontSize="35"
                     FontAttributes="Bold"
                     TextColor="White"
                     CornerRadius="15"
