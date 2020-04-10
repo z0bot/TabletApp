@@ -34,6 +34,23 @@
                                 FontSize="Medium"
                                 FontAttributes="Bold"
                                 TextColor="Black"/>
+                        <Grid
+                            x:Name="cpScrollGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout
+                                x:Name="cpScrollGridLabel">
+                            </StackLayout>
+
+                            <StackLayout
+                                x:Name="cpScrollGridSwitch"
+                                Grid.Column="1">
+                                
+                            </StackLayout>
+                        </Grid>
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

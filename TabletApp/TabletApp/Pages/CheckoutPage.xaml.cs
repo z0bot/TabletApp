@@ -22,17 +22,20 @@ namespace TabletApp.Pages
             {
                 Models.MenuItem x = order.menuItems[i];
 
-                cpOrderScroll.Children.Add(new Label()
+                cpScrollGridLabel.Children.Add(new Label()
                 {
                     Text = x.name + " --- " + x.price,
                     Margin = new Thickness(30, 0, 30, 15),
                     FontSize = 20,
                     WidthRequest = 100,
-                    TextColor = Color.Black
+                    TextColor = Color.Black,
+                });
+
+                cpScrollGridSwitch.Children.Add(new Switch()
+                {
+                    
                 });
             }
-
-            
         }
 	}
 }

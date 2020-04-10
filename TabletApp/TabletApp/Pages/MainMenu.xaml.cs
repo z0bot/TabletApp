@@ -18,15 +18,13 @@ namespace TabletApp.Pages
     {
         public static MainMenu _instance;
 
+        private bool isClickedEnabled = false;
+
         public MainMenu()
         {
             InitializeComponent();
 
             _instance = this;
-
-            RealmManager.RemoveAll<OrderList>();
-            RealmManager.RemoveAll<OrderedList>();
-            RealmManager.RemoveAll<TableManager>();
 
             RealmManager.AddOrUpdate<TableManager>(new TableManager
             {
@@ -44,12 +42,14 @@ namespace TabletApp.Pages
             if (RealmManager.All<OrderedList>().Count() > 0)
             {
                 _instance.uxCheckOutButton.BackgroundColor = new Color(0x24BF87);
-                _instance.uxCheckOutButton.Clicked += uxCheckOutButton_Clicked;
+                if (!_instance.isClickedEnabled) _instance.uxCheckOutButton.Clicked += uxCheckOutButton_Clicked;
+                _instance.isClickedEnabled = true;
             }
             else
             {
                 _instance.uxCheckOutButton.BackgroundColor = new Color(0x222222);
                 _instance.uxCheckOutButton.Clicked -= uxCheckOutButton_Clicked;
+                _instance.isClickedEnabled = false;
             }
         }
 

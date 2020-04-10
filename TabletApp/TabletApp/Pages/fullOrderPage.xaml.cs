@@ -73,6 +73,7 @@ namespace TabletApp.Pages
             RealmManager.AddOrUpdate<OrderedList>(tempList);
 
             MainMenu.OnReturn();
+
             await Navigation.PopAsync();
         }
 	}

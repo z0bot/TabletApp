@@ -7,11 +7,20 @@ namespace TabletApp
 {
     public partial class App : Application
     {
+        public static App _instance;
+
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainMenu());
+            _instance = this;
+
+            MainPage = new LoginPage();
+        }
+
+        public static void changeMainPage(NavigationPage navPage)
+        {
+            _instance.MainPage = navPage;
         }
 
         protected override void OnStart()

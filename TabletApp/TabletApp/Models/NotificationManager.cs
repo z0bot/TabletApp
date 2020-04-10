@@ -25,11 +25,26 @@ namespace TabletApp.Models
             }
         }
 
+        static string _employeeID { get; set; }
+        static string employeeID
+        {
+            get
+            {
+                if (_employeeID == null) _employeeID = RealmManager.All<TableManager>().First().employee_id;
+
+                return _employeeID;
+            }
+            set
+            {
+                _employeeID = value;
+            }
+        }
+
         string _employee_ID { get; set; }
 
         public static async Task<bool> SendNotification(string type)
         {
-            return await AddNotificationRequest.SendAddNotificationRequest("Test78217418401", table, type);
+            return await AddNotificationRequest.SendAddNotificationRequest(employeeID, table, type);
         }
     }
 }

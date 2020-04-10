@@ -40,8 +40,8 @@ namespace TabletApp.Models.ServiceRequests
 
     public class AddNotificationRequestBody
     {
-        public string employee_id;
-        public string sender;
-        public string notificationType;
+        public string employee_id { get; set; }
+        public string sender { get; set; }
+        public string notificationType { get; set; }
     }
 }

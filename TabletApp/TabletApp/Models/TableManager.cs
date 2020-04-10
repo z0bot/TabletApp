@@ -9,5 +9,6 @@ namespace TabletApp.Models
     class TableManager : RealmObject
     {
         public string table { get; set; }
+        public string employee_id { get; set; }
     }
 }
