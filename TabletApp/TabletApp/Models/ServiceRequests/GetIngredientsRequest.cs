@@ -7,24 +7,24 @@ using System.Threading.Tasks;
 
 namespace TabletApp.Models.ServiceRequests
 {
-    public class GetEmployeesRequest : ServiceRequest
+    public class GetIngredientsRequest : ServiceRequest
     {
         //the endpoint we are trying to hit
         public override string Url { get; set; }
         //the type of request
         public override HttpMethod Method => HttpMethod.Get;
 
-        public GetEmployeesRequest()
+        public GetIngredientsRequest()
         {
             Url = "https://dijkstras-steakhouse-restapi.herokuapp.com/employees";
         }
 
-        public static async Task<bool> SendGetEmployeesRequest()
+        public static async Task<bool> SendGetIngredientsRequest()
         {
             //make a new request object
-            var serviceRequest = new GetEmployeesRequest();
+            var serviceRequest = new GetIngredientsRequest();
             //get a response
-            var response = await ServiceRequestHandler.MakeServiceCall<EmployeeList>(serviceRequest);
+            var response = await ServiceRequestHandler.MakeServiceCall<IngredientList>(serviceRequest);
 
             if (response == null)
             {
@@ -34,7 +34,7 @@ namespace TabletApp.Models.ServiceRequests
             else
             {
                 //add the response into the local database
-                RealmManager.AddOrUpdate<EmployeeList>(response);
+                RealmManager.AddOrUpdate<IngredientList>(response);
                 //call succeeded
                 return true;
             }
