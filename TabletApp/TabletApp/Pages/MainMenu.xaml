@@ -58,16 +58,6 @@
                     TextColor="White"
                     CornerRadius="15"
                     BackgroundColor="#24BF87"/>
-                <Button
-                    x:Name="uxCheckOutButton"
-                    Margin="100,0,100,0"
-                    Padding="0,15,0,15"
-                    Text="Pay Ticket"
-                    FontSize="35"
-                    FontAttributes="Bold"
-                    TextColor="White"
-                    CornerRadius="15"
-                    BackgroundColor="#222222"/>
             </StackLayout>
 
             <StackLayout

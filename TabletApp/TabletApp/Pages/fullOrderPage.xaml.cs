@@ -58,23 +58,26 @@ namespace TabletApp.Pages
 
         private async void foSubmitFoodButton_Clicked(object sender, EventArgs e)
         {
-            OrderedList tempList = new OrderedList();
+            if (fullOrder.menuItems.Count() != 0)
+            {
+                OrderedList tempList = new OrderedList();
 
-            if (RealmManager.All<OrderedList>().Count() > 0)
-                for (int i = 0; i < RealmManager.All<OrderedList>().First().menuItems.Count(); i++)
-                    tempList.menuItems.Add(RealmManager.All<OrderedList>().First().menuItems[i]);
+                if (RealmManager.All<OrderedList>().Count() > 0)
+                    for (int i = 0; i < RealmManager.All<OrderedList>().First().menuItems.Count(); i++)
+                        tempList.menuItems.Add(RealmManager.All<OrderedList>().First().menuItems[i]);
 
-            for (int i = 0; i < fullOrder.menuItems.Count(); i++)
-                tempList.menuItems.Add(fullOrder.menuItems[i]);
+                for (int i = 0; i < fullOrder.menuItems.Count(); i++)
+                    tempList.menuItems.Add(fullOrder.menuItems[i]);
 
-            RealmManager.RemoveAll<OrderedList>();
-            RealmManager.RemoveAll<OrderList>();
+                RealmManager.RemoveAll<OrderedList>();
+                RealmManager.RemoveAll<OrderList>();
 
-            RealmManager.AddOrUpdate<OrderedList>(tempList);
+                RealmManager.AddOrUpdate<OrderedList>(tempList);
 
-            MainMenu.OnReturn();
+                MainMenu.OnReturn();
 
-            await Navigation.PopAsync();
+                await Navigation.PopAsync();
+            }
         }
 	}
 }

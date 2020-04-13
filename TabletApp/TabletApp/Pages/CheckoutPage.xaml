@@ -55,6 +55,21 @@
                 </ScrollView>
             </StackLayout>
 
+            <StackLayout
+                Grid.Row="3">
+                <Label
+                    x:Name="cpFullPrice"
+                    Text="Total: $0.00"/>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="3"
+                Grid.Column="2">
+                <Button
+                    x:Name="cpCheckoutButton"
+                    Text="CheckOut"/>
+            </StackLayout>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

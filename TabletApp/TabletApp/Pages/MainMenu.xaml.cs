@@ -18,7 +18,7 @@ namespace TabletApp.Pages
     {
         public static MainMenu _instance;
 
-        private bool isClickedEnabled = false;
+        private Button checkOutButton;
 
         public MainMenu()
         {
@@ -31,6 +31,8 @@ namespace TabletApp.Pages
                 table = "Table 19"
             });
 
+            OnReturn();
+
             uxOrderButton.Clicked += uxOrderButton_Clicked;
             uxPlayButton.Clicked += UxPlayButton_Clicked;
             uxCallServerButton.Clicked += uxCallServerButton_Clicked;
@@ -39,17 +41,29 @@ namespace TabletApp.Pages
 
         public static void OnReturn()
         {
-            if (RealmManager.All<OrderedList>().Count() > 0)
+            if (RealmManager.All<OrderedList>().Count() > 0 && _instance.checkOutButton == null)
             {
-                _instance.uxCheckOutButton.BackgroundColor = new Color(0x24BF87);
-                if (!_instance.isClickedEnabled) _instance.uxCheckOutButton.Clicked += uxCheckOutButton_Clicked;
-                _instance.isClickedEnabled = true;
+                _instance.checkOutButton = new Button()
+                {
+                    Margin = new Thickness(100, 0, 100, 0),
+                    Padding = new Thickness(0, 15, 0, 15),
+                    Text = "Pay Ticket",
+                    FontSize = 35,
+                    FontAttributes = FontAttributes.Bold,
+                    TextColor = Xamarin.Forms.Color.White,
+                    CornerRadius = 15,
+                    BackgroundColor = Xamarin.Forms.Color.FromHex("#24BF87")
+                };
+
+                _instance.checkOutButton.Clicked += uxCheckOutButton_Clicked;
+
+                _instance.uxTitleButtonStack.Children.Add(_instance.checkOutButton);
             }
             else
             {
-                _instance.uxCheckOutButton.BackgroundColor = new Color(0x222222);
-                _instance.uxCheckOutButton.Clicked -= uxCheckOutButton_Clicked;
-                _instance.isClickedEnabled = false;
+                if (_instance.checkOutButton != null) _instance.uxTitleButtonStack.Children.Remove(_instance.checkOutButton);
+
+                _instance.checkOutButton = null;
             }
         }
 

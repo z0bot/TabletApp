@@ -14,6 +14,10 @@ namespace TabletApp.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CheckoutPage : ContentPage
 	{
+        private float totalPrice = 0;
+
+        private OrderedList checkOutOrder = new OrderedList();
+
 		public CheckoutPage(OrderedList order)
 		{
 			InitializeComponent();
@@ -31,11 +35,42 @@ namespace TabletApp.Pages
                     TextColor = Color.Black,
                 });
 
-                cpScrollGridSwitch.Children.Add(new Switch()
+                Switch newSwitch = new Switch() { };
+
+                newSwitch.Toggled += (sender, e) =>
                 {
-                    
-                });
+                    float price = x.price;
+
+                    if (newSwitch.IsToggled)
+                    {
+                        checkOutOrder.menuItems.Add(x);
+
+                        totalPrice += price;
+                    }
+                    else
+                    {
+                        checkOutOrder.menuItems.Remove(x);
+
+                        totalPrice -= price;
+                    }
+
+                    updateTotalPrice();
+                };
+
+                cpScrollGridSwitch.Children.Add(newSwitch);
             }
+
+            cpCheckoutButton.Clicked += cpCheckoutButton_Clicked;
         }
-	}
+
+        private async void cpCheckoutButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updateTotalPrice()
+        {
+            cpFullPrice.Text = "Total: $" + totalPrice.ToString();
+        }
+    }
 }

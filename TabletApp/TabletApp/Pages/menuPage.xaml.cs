@@ -19,7 +19,7 @@ namespace TabletApp.Pages
 		{
 			InitializeComponent ();
 
-            RequestMenuItems();
+            SetupMenuItems();
 
             if (RealmManager.All<OrderList>().Count() == 0) RealmManager.AddOrUpdate<OrderList>(new OrderList());
 
@@ -29,14 +29,14 @@ namespace TabletApp.Pages
             mpCallServerButton.Clicked += mpCallServerButton_Clicked;
         }
 
-        async void RequestMenuItems()
+        async void SetupMenuItems()
         {
             await GetMenuItemsRequest.SendGetMenuItemsRequest();
-            SetupMenuItems();
-        }
 
-        void SetupMenuItems()
-        {
+            if (RealmManager.All<MenuList>().Count() == 0) return;
+
+            if (RealmManager.All<MenuList>().First().menuItems.Count() == 0) return;
+
             for (int i = 0; i < RealmManager.All<MenuList>().First().menuItems.Count(); i++)
             {
                 Models.MenuItem currItem = RealmManager.All<MenuList>().First().menuItems[i];
@@ -53,12 +53,19 @@ namespace TabletApp.Pages
                     BackgroundColor = Xamarin.Forms.Color.FromHex("#24BF87"),
                 };
 
-                newButton.Clicked += async (sender, args) => await Navigation.PushAsync(new menuItemPage(currItem));
+                newButton.Clicked += async (sender, args) =>
+                {
+                    menuItemPage newPage = new menuItemPage(currItem);
+                    newPage.BackgroundImageSource = ImageSource.FromStream(() => new System.IO.MemoryStream(Convert.FromBase64String((currItem.picture.Split(',')[1]))));
+
+                    await Navigation.PushAsync(newPage);
+                };
 
                 if (currItem.category == "Entree") entreeScroll.Children.Add(newButton);
                 else if (currItem.category == "Appetizers") appScroll.Children.Add(newButton);
                 else if (currItem.category == "Drink") drinkScroll.Children.Add(newButton);
                 else if (currItem.category == "Side") sideScroll.Children.Add(newButton);
+                else if (currItem.category == "Dessert") sideScroll.Children.Add(newButton);
             }
         }
 
