@@ -14,50 +14,53 @@ namespace TabletApp.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class CheckoutPage : ContentPage
 	{
-        private float totalPrice = 0;
+        private double totalPrice = 0;
 
-        private OrderedList checkOutOrder = new OrderedList();
+        private OrderList checkOutOrder = new OrderList();
 
-		public CheckoutPage(OrderedList order)
+		public CheckoutPage()
 		{
 			InitializeComponent();
 
-            for (int i = 0; i < order.menuItems.Count(); i++)
+            for (int i = 0; i < RealmManager.All<Table>().First().order_id.menuItems.Count(); i++)
             {
-                Models.MenuItem x = order.menuItems[i];
+                Models.OrderItem x = RealmManager.All<Table>().First().order_id.menuItems[i];
 
-                cpScrollGridLabel.Children.Add(new Label()
+                if (!x.paid)
                 {
-                    Text = x.name + " --- " + x.price,
-                    Margin = new Thickness(30, 0, 30, 15),
-                    FontSize = 20,
-                    WidthRequest = 100,
-                    TextColor = Color.Black,
-                });
-
-                Switch newSwitch = new Switch() { };
-
-                newSwitch.Toggled += (sender, e) =>
-                {
-                    float price = x.price;
-
-                    if (newSwitch.IsToggled)
+                    cpScrollGridLabel.Children.Add(new Label()
                     {
-                        checkOutOrder.menuItems.Add(x);
+                        Text = x.name + " --- " + x.price,
+                        Margin = new Thickness(30, 0, 30, 15),
+                        FontSize = 20,
+                        WidthRequest = 100,
+                        TextColor = Color.Black,
+                    });
 
-                        totalPrice += price;
-                    }
-                    else
+                    Switch newSwitch = new Switch() { };
+
+                    newSwitch.Toggled += (sender, e) =>
                     {
-                        checkOutOrder.menuItems.Remove(x);
+                        double price = x.price;
 
-                        totalPrice -= price;
-                    }
+                        if (newSwitch.IsToggled)
+                        {
+                            checkOutOrder.orderItems.Add(x);
 
-                    updateTotalPrice();
-                };
+                            totalPrice += price;
+                        }
+                        else
+                        {
+                            checkOutOrder.orderItems.Remove(x);
 
-                cpScrollGridSwitch.Children.Add(newSwitch);
+                            totalPrice -= price;
+                        }
+
+                        updateTotalPrice();
+                    };
+
+                    cpScrollGridSwitch.Children.Add(newSwitch);
+                }
             }
 
             cpCheckoutButton.Clicked += cpCheckoutButton_Clicked;

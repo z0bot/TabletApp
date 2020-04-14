@@ -8,13 +8,14 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using TabletApp.Models;
+using TabletApp.Models.ServiceRequests;
 
 namespace TabletApp.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class fullOrderPage : ContentPage
 	{
-        private float priceTotal = 0;
+        private double priceTotal = 0;
 
         private OrderList fullOrder;
 
@@ -26,9 +27,9 @@ namespace TabletApp.Pages
 
             foSubmitFoodButton.Clicked += foSubmitFoodButton_Clicked;
 
-            for(int i = 0; i < order.menuItems.Count(); i++)
+            for(int i = 0; i < order.orderItems.Count(); i++)
             {
-                Models.MenuItem x = order.menuItems[i];
+                Models.OrderItem x = order.orderItems[i];
 
                 entreeScroll.Children.Add(new Label()
                 {
@@ -50,7 +51,7 @@ namespace TabletApp.Pages
 
                 priceTotal += x.price;
 
-                fullOrder.menuItems.Add(x);
+                fullOrder.orderItems.Add(x);
             }
 
             foOrderTotal.Text += "$" + priceTotal;
@@ -58,21 +59,12 @@ namespace TabletApp.Pages
 
         private async void foSubmitFoodButton_Clicked(object sender, EventArgs e)
         {
-            if (fullOrder.menuItems.Count() != 0)
+            if (fullOrder.orderItems.Count() != 0)
             {
-                OrderedList tempList = new OrderedList();
+                await UpdateOrderMenuItemsRequest.SendUpdateOrderMenuItemsRequest(RealmManager.All<Table>().First().order_id._id, fullOrder.orderItems);
 
-                if (RealmManager.All<OrderedList>().Count() > 0)
-                    for (int i = 0; i < RealmManager.All<OrderedList>().First().menuItems.Count(); i++)
-                        tempList.menuItems.Add(RealmManager.All<OrderedList>().First().menuItems[i]);
-
-                for (int i = 0; i < fullOrder.menuItems.Count(); i++)
-                    tempList.menuItems.Add(fullOrder.menuItems[i]);
-
-                RealmManager.RemoveAll<OrderedList>();
                 RealmManager.RemoveAll<OrderList>();
-
-                RealmManager.AddOrUpdate<OrderedList>(tempList);
+                RealmManager.AddOrUpdate<OrderList>(new OrderList());
 
                 MainMenu.OnReturn();
 

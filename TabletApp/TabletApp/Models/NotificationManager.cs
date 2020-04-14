@@ -15,7 +15,7 @@ namespace TabletApp.Models
         {
             get
             {
-                if (_table == null) _table = RealmManager.All<TableManager>().First().table;
+                if (_table == null) _table = RealmManager.All<Table>().First().tableNumberString;
 
                 return _table;
             }
@@ -30,7 +30,7 @@ namespace TabletApp.Models
         {
             get
             {
-                if (_employeeID == null) _employeeID = RealmManager.All<TableManager>().First().employee_id;
+                if (_employeeID == null) _employeeID = RealmManager.All<Table>().First().employee_id;
 
                 return _employeeID;
             }

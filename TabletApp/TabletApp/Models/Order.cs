@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace TabletApp.Models
 {
-    public class OrderedList : RealmObject
+    public class Order : RealmObject
     {
-        public IList<MenuItem> menuItems { get; }
+        public string _id { get; set; }
+        public IList<OrderItem> menuItems { get; }
     }
 }

@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using TabletApp.Models;
+using TabletApp.Models.ServiceRequests;
 
 using Realms;
 
@@ -26,11 +27,6 @@ namespace TabletApp.Pages
 
             _instance = this;
 
-            RealmManager.AddOrUpdate<TableManager>(new TableManager
-            {
-                table = "Table 19"
-            });
-
             OnReturn();
 
             uxOrderButton.Clicked += uxOrderButton_Clicked;
@@ -39,9 +35,22 @@ namespace TabletApp.Pages
             uxRefillButton.Clicked += uxRefillButton_Clicked;
         }
 
-        public static void OnReturn()
+        public static async void OnReturn()
         {
-            if (RealmManager.All<OrderedList>().Count() > 0 && _instance.checkOutButton == null)
+            bool unpaid = false;
+
+            await GetTableRequest.SendGetTableRequest(RealmManager.All<Table>().First().table_number);
+
+            for (int i = 0; i < RealmManager.All<Table>().First().order_id.menuItems.Count(); i++)
+            {
+                if (!RealmManager.All<Table>().First().order_id.menuItems[i].paid)
+                {
+                    unpaid = true;
+                    break;
+                }
+            }
+
+            if (unpaid && _instance.checkOutButton == null)
             {
                 _instance.checkOutButton = new Button()
                 {
@@ -69,7 +78,7 @@ namespace TabletApp.Pages
 
         private static async void uxCheckOutButton_Clicked(object sender, EventArgs e)
         {
-            await _instance.Navigation.PushAsync(new CheckoutPage(RealmManager.All<OrderedList>().First()));
+            await _instance.Navigation.PushAsync(new CheckoutPage());
         }
 
         private async void uxOrderButton_Clicked(object sender, EventArgs e)

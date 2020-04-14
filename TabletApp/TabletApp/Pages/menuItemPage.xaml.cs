@@ -59,12 +59,12 @@ namespace TabletApp.Pages
         {
             OrderList order = new OrderList();
             
-            for (int i = 0; i < RealmManager.All<OrderList>().First().menuItems.Count(); i++)
+            for (int i = 0; i < RealmManager.All<OrderList>().First().orderItems.Count(); i++)
             {
-                order.menuItems.Add(RealmManager.All<OrderList>().First().menuItems[i]);
+                order.orderItems.Add(RealmManager.All<OrderList>().First().orderItems[i]);
             }
 
-            order.menuItems.Add(menuItem);
+            order.orderItems.Add(new OrderItem(menuItem));
 
             RealmManager.RemoveAll<OrderList>();
             RealmManager.AddOrUpdate<OrderList>(order);

@@ -32,14 +32,33 @@ namespace TabletApp.Pages
         async void SetupMenuItems()
         {
             await GetMenuItemsRequest.SendGetMenuItemsRequest();
+            await GetIngredientsRequest.SendGetIngredientsRequest();
 
-            if (RealmManager.All<MenuList>().Count() == 0) return;
+            IngredientList ingredientList = new IngredientList();
 
-            if (RealmManager.All<MenuList>().First().menuItems.Count() == 0) return;
+            for(int i = 0; i < RealmManager.All<IngredientList>().First().doc.Count(); i++)
+            {
+                ingredientList.doc.Add(RealmManager.All<IngredientList>().First().doc[i]);
+            }
 
             for (int i = 0; i < RealmManager.All<MenuList>().First().menuItems.Count(); i++)
             {
                 Models.MenuItem currItem = RealmManager.All<MenuList>().First().menuItems[i];
+
+                bool available = true;
+
+                for(int j = 0; j < currItem.ingredients.Count(); j++)
+                {
+                    IList<Ingredient>  ingredients = ingredientList.doc.Where((Ingredient ing) => (ing._id == currItem.ingredients[j]._id)).ToList<Ingredient>();
+
+                    if (ingredients.Count() == 0)
+                    {
+                        available = false;
+                        break;
+                    }
+                }
+
+                if (!available) continue;
 
                 Button newButton = new Button()
                 {
@@ -62,7 +81,7 @@ namespace TabletApp.Pages
                 };
 
                 if (currItem.category == "Entree") entreeScroll.Children.Add(newButton);
-                else if (currItem.category == "Appetizers") appScroll.Children.Add(newButton);
+                else if (currItem.category == "Appetizer") appScroll.Children.Add(newButton);
                 else if (currItem.category == "Drink") drinkScroll.Children.Add(newButton);
                 else if (currItem.category == "Side") sideScroll.Children.Add(newButton);
                 else if (currItem.category == "Dessert") sideScroll.Children.Add(newButton);

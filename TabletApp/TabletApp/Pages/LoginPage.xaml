@@ -23,10 +23,8 @@
                 Grid.Column="1">
                 <Entry
                     x:Name="lpTableEntry"
-                    
-                    FontSize="40"
-                    
-                    />
+                    Keyboard="Numeric"
+                    FontSize="40"/>
                     
                 <Button
                     x:Name="lpTableButton"

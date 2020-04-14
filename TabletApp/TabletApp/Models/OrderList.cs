@@ -9,6 +9,6 @@ namespace TabletApp.Models
 {
     public class OrderList : RealmObject
     {
-        public IList<MenuItem> menuItems { get; }
+        public IList<OrderItem> orderItems { get; }
     }
 }
