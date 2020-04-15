@@ -29,7 +29,7 @@ namespace TabletApp.Pages
 
             for(int i = 0; i < order.orderItems.Count(); i++)
             {
-                Models.OrderItem x = order.orderItems[i];
+                OrderItem x = order.orderItems[i];
 
                 entreeScroll.Children.Add(new Label()
                 {

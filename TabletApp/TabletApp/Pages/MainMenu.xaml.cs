@@ -81,6 +81,7 @@ namespace TabletApp.Pages
 
         private static async void uxCheckOutButton_Clicked(object sender, EventArgs e)
         {
+            await GetTableRequest.SendGetTableRequest(RealmManager.All<Table>().First().table_number);
             await _instance.Navigation.PushAsync(new CheckoutPage());
         }
 
