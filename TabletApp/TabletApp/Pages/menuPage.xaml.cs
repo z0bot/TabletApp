@@ -84,7 +84,7 @@ namespace TabletApp.Pages
                 else if (currItem.category == "Appetizer") appScroll.Children.Add(newButton);
                 else if (currItem.category == "Drink") drinkScroll.Children.Add(newButton);
                 else if (currItem.category == "Side") sideScroll.Children.Add(newButton);
-                else if (currItem.category == "Dessert") sideScroll.Children.Add(newButton);
+                else if (currItem.category == "Dessert") dessertScroll.Children.Add(newButton);
             }
         }
 

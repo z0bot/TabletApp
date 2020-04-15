@@ -21,6 +21,7 @@ namespace TabletApp.Pages
 		{
 			InitializeComponent ();
 
+            RealmManager.RemoveAll<Table>();
             RealmManager.RemoveAll<OrderList>();
             RealmManager.RemoveAll<EmployeeList>();
             RealmManager.RemoveAll<IngredientList>();

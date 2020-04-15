@@ -24,6 +24,7 @@
                 <Entry
                     x:Name="lpTableEntry"
                     Keyboard="Numeric"
+                    HorizontalTextAlignment="Center"
                     FontSize="40"/>
                     
                 <Button

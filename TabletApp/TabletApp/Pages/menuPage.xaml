@@ -72,6 +72,15 @@
                             FontAttributes="Bold"
                             TextColor="Black"/>
                         </StackLayout>
+                        <StackLayout
+                            x:Name="dessertScroll">
+                            <Label
+                            Text="Dessert"
+                            Margin="30, 30, 30, 30"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            TextColor="Black"/>
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

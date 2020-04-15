@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             BackgroundImageSource="baseBackground"
+             x:Class="TabletApp.Pages.PaymentPage">
+    <ContentPage.Content>
+        <StackLayout
+            x:Name="mainStack">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                x:Name="ppCardNumLabel"
+                Grid.Row="0"
+                Grid.Column="0"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                TextColor="Black"
+                FontSize="Title"
+                FontAttributes="Bold"
+                Margin="15,15,15,15"
+                Text="Card Number"/>
+                <Entry
+                x:Name="ppCardNumEntry"
+                Grid.Row="0"
+                Grid.Column="1"
+                Keyboard="Numeric"
+                TextColor="Black"
+                FontSize="Medium"
+                Margin="30,0,30,20"
+                Text=""
+                HorizontalTextAlignment="Center"/>
+
+                <Label
+                x:Name="ppCardSecLabel"
+                Grid.Row="1"
+                Grid.Column="0"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                TextColor="Black"
+                FontSize="Title"
+                FontAttributes="Bold"
+                Margin="15,15,15,15"
+                Text="Card Security Code"/>
+                <Entry
+                x:Name="ppCardSecEntry"
+                Grid.Row="1"
+                Grid.Column="1"
+                Keyboard="Numeric"
+                TextColor="Black"
+                FontSize="Medium"
+                Margin="30,0,30,20"
+                Text=""
+                HorizontalTextAlignment="Center"/>
+
+                <Label
+                x:Name="ppCardHolderLabel"
+                Grid.Row="2"
+                Grid.Column="0"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                TextColor="Black"
+                FontSize="Title"
+                FontAttributes="Bold"
+                Margin="15,15,15,15"
+                Text="Card Holder"/>
+                <Entry
+                x:Name="ppCardNumHolderEntry"
+                Grid.Row="2"
+                Grid.Column="1"
+                TextColor="Black"
+                FontSize="Medium"
+                Margin="30,0,30,20"
+                Text=""
+                HorizontalTextAlignment="Center"/>
+
+                <Label
+                x:Name="ppCardDateLabel"
+                Grid.Row="3"
+                Grid.Column="0"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                TextColor="Black"
+                FontSize="Subtitle"
+                FontAttributes="Bold"
+                Margin="15,15,15,15"
+                Text="Card Exp Date (mm/dd/yyyy)"/>
+                <Entry
+                x:Name="ppCardDateEntry"
+                Grid.Row="3"
+                Grid.Column="1"
+                Keyboard="Telephone"
+                TextColor="Black"
+                FontSize="Medium"
+                Margin="30,0,30,20"
+                Text=""
+                HorizontalTextAlignment="Center"/>
+
+                <Label
+                x:Name="ppTotalCheck"
+                Grid.Row="5"
+                Grid.Column="0"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                TextColor="Black"
+                FontSize="Title"
+                FontAttributes="Bold"
+                Margin="15,15,15,15"
+                Text="Total: "/>
+
+                <Button 
+                x:Name="confirmPayButton" 
+                Grid.Row="5"
+                Grid.Column="1"
+                Text="Pay With Card"
+                BackgroundColor="#1fbd85"
+                TextColor="White" 
+                Margin="0,30,0,0"
+                FontSize="Medium"
+                WidthRequest="300"
+                Clicked="confirmButton"
+                HorizontalOptions="Center"
+                CornerRadius="15"/>
+
+                <Button 
+                x:Name="PayWithCashButton" 
+                Grid.Row="5"
+                Grid.Column="2"
+                Text="Pay With Cash"
+                BackgroundColor="#1fbd85"
+                TextColor="White" 
+                Margin="0,30,0,0"
+                FontSize="Large"
+                WidthRequest="300"
+                Clicked="payWithCashClicked"
+                HorizontalOptions="Center"
+                CornerRadius="15"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

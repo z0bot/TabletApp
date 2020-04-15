@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="TabletApp.Pages.RandomGamePage"
+             BackgroundImageSource="baseBackground">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                TextColor="Black"
+                FontSize="Title"
+                FontAttributes="Bold"
+                Margin="15,15,15,0"
+                Text="Guess a number!"/>
+            <Label
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                TextColor="Black"
+                FontSize="Medium"
+                Margin="15,0,15,15"
+                HorizontalTextAlignment="Center"
+                Text="Win a free dessert by guessing a number between 1 and 5!"/>
+
+            <!--Five buttons for the game of chance-->
+            <Button
+                Text="1"
+                FontSize="Large"
+                Margin="30, 0, 30, 20"
+                FontAttributes="Bold"
+                TextColor="White"
+                BackgroundColor="#1fbd85"
+                CornerRadius="15"
+                Clicked="onClicked"/>
+
+            <Button
+                Text="2"
+                FontSize="Large"
+                Margin="30, 0, 30, 20"
+                FontAttributes="Bold"
+                TextColor="White"
+                BackgroundColor="#1fbd85"
+                CornerRadius="15"
+                Clicked="onClicked"/>
+
+            <Button
+                Text="3"
+                FontSize="Large"
+                Margin="30, 0, 30, 20"
+                FontAttributes="Bold"
+                TextColor="White"
+                BackgroundColor="#1fbd85"
+                CornerRadius="15"
+                Clicked="onClicked"/>
+
+            <Button
+                Text="4"
+                FontSize="Large"
+                Margin="30, 0, 30, 20"
+                FontAttributes="Bold"
+                TextColor="White"
+                BackgroundColor="#1fbd85"
+                CornerRadius="15"
+                Clicked="onClicked"/>
+
+            <Button
+                Text="5"
+                FontSize="Large"
+                Margin="30, 0, 30, 20"
+                FontAttributes="Bold"
+                TextColor="White"
+                BackgroundColor="#1fbd85"
+                CornerRadius="15"
+                Clicked="onClicked"/>
+
+            <!--Refill/help buttons-->
+            <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="EndAndExpand">
+
+                <StackLayout
+                            x:Name="refillLayout"
+                            Margin="25,0,10,0"
+                            Orientation="Vertical"
+                            VerticalOptions="EndAndExpand"
+                            HorizontalOptions="StartAndExpand">
+                    <Label
+                                Text="Refill"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                    <ImageButton
+                                x:Name="refillButton"
+                                CornerRadius="15"
+                                Source="plusButton"
+                                BackgroundColor="Transparent"
+                                WidthRequest="70"
+                                HeightRequest="70"
+                                Clicked="OnRefillButtonClicked"/>
+                </StackLayout>
+
+
+                <StackLayout
+                            x:Name="serverButtonLayout"
+                            Orientation="Vertical"
+                            Margin="10,0,25,0"
+                            VerticalOptions="EndAndExpand"
+                            HorizontalOptions="EndAndExpand">
+                    <Label
+                                Text="Call Server"
+                                HorizontalTextAlignment="Center"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                    <ImageButton
+                                x:Name="serverButton"
+                                CornerRadius="15"
+                                BackgroundColor="Transparent"
+                                WidthRequest="70"
+                                HeightRequest="70"
+                                Source="plusButton"
+                                Clicked="OnServerButtonClicked"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

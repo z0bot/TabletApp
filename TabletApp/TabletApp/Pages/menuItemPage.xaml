@@ -34,6 +34,15 @@
                     FontSize="Medium"
                     VerticalTextAlignment="Center"
                     Text="MENU ITEM DESCRIPTION"/>
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    VerticalTextAlignment="Center"
+                    Text="Special Instructions"/>
+                <Editor
+                    x:Name="miItemSpecialInstructions"
+                    FontSize="Medium"
+                    Text=""/>
             </StackLayout>
 
             <StackLayout

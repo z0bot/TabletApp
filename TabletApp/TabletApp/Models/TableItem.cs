@@ -15,6 +15,6 @@ namespace TabletApp.Models
         public int table_number { get; set; }
         public string employee_id { get; set; }
         public Order order_id { get; set; }
-        public string tableNumberString => "Table" + table_number.ToString();
+        public string tableNumberString => "Table " + table_number.ToString();
     }
 }

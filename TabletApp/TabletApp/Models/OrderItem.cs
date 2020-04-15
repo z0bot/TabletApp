@@ -9,8 +9,6 @@ namespace TabletApp.Models
     // This class is very similar to MenuFoodItem, but is used to store items which are in the user's order
     public class OrderItem : RealmObject
     {
-        [PrimaryKey]
-        public string newID { get; set; }
 
         public IList<string> ingredients { get; }
 
@@ -18,8 +16,6 @@ namespace TabletApp.Models
         //public string newID { get; set; }
 
         public string _id { get; set; } // Original item's ID
-
-
 
         public string name { get; set; }
 
@@ -40,7 +36,9 @@ namespace TabletApp.Models
         //public string category { get; set; }
 
         // Default constructor
-        public OrderItem() { }
+        public OrderItem()
+        {
+        }
 
         // Create item based on Menu Item
         public OrderItem(MenuItem m)

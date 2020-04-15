@@ -50,23 +50,26 @@ namespace TabletApp.Pages
                 }
             }
 
-            if (unpaid && _instance.checkOutButton == null)
+            if (unpaid)
             {
-                _instance.checkOutButton = new Button()
+                if (_instance.checkOutButton == null)
                 {
-                    Margin = new Thickness(100, 0, 100, 0),
-                    Padding = new Thickness(0, 15, 0, 15),
-                    Text = "Pay Ticket",
-                    FontSize = 35,
-                    FontAttributes = FontAttributes.Bold,
-                    TextColor = Xamarin.Forms.Color.White,
-                    CornerRadius = 15,
-                    BackgroundColor = Xamarin.Forms.Color.FromHex("#24BF87")
-                };
+                    _instance.checkOutButton = new Button()
+                    {
+                        Margin = new Thickness(100, 0, 100, 0),
+                        Padding = new Thickness(0, 15, 0, 15),
+                        Text = "Pay Ticket",
+                        FontSize = 35,
+                        FontAttributes = FontAttributes.Bold,
+                        TextColor = Xamarin.Forms.Color.White,
+                        CornerRadius = 15,
+                        BackgroundColor = Xamarin.Forms.Color.FromHex("#24BF87")
+                    };
 
-                _instance.checkOutButton.Clicked += uxCheckOutButton_Clicked;
+                    _instance.checkOutButton.Clicked += uxCheckOutButton_Clicked;
 
-                _instance.uxTitleButtonStack.Children.Add(_instance.checkOutButton);
+                    _instance.uxTitleButtonStack.Children.Add(_instance.checkOutButton);
+                }
             }
             else
             {

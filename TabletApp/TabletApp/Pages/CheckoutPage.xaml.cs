@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using TabletApp.Models;
+using TabletApp.Models.ServiceRequests;
 
 namespace TabletApp.Pages
 {
@@ -16,15 +17,57 @@ namespace TabletApp.Pages
 	{
         private double totalPrice = 0;
 
+        private double tip = 0;
+
+        private Order order;
+
         private OrderList checkOutOrder = new OrderList();
 
 		public CheckoutPage()
 		{
 			InitializeComponent();
 
-            for (int i = 0; i < RealmManager.All<Table>().First().order_id.menuItems.Count(); i++)
+            updateItems();
+
+            cpCheckoutButton.Clicked += cpCheckoutButton_Clicked;
+        }
+
+        private async void cpCheckoutButton_Clicked(object sender, EventArgs e)
+        {
+            await UpdateOrderMenuItemsRequest.SendUpdateOrderMenuItemsRequest(order._id, order.menuItems);
+
+            tip = (cpTip.Text == "") ? 0f : Double.Parse(cpTip.Text);
+
+            updateItems();
+
+            MainMenu.OnReturn();
+
+            await PostTipRequest.SendPostTipRequest(order.employee_id, tip);
+
+            await Navigation.PushAsync(new PaymentPage(totalPrice, tip));
+        }
+
+        private void updateItems()
+        {
+            if (cpScrollGridLabel.Children.Count() > 0) cpScrollGridLabel.Children.Clear();
+            if (cpScrollGridSwitch.Children.Count() > 0) cpScrollGridSwitch.Children.Clear();
+
+            Order oldOrder = RealmManager.All<Table>().First().order_id;
+
+            order = new Order();
+
+            order._id = oldOrder._id;
+            order.employee_id = oldOrder.employee_id;
+            order.send_to_kitchen = oldOrder.send_to_kitchen;
+
+            for (int i = 0; i < oldOrder.menuItems.Count(); i++)
             {
-                Models.OrderItem x = RealmManager.All<Table>().First().order_id.menuItems[i];
+                order.menuItems.Add(new OrderItem(oldOrder.menuItems[i]));
+            }
+
+            for (int i = 0; i < order.menuItems.Count(); i++)
+            {
+                OrderItem x = order.menuItems[i];
 
                 if (!x.paid)
                 {
@@ -48,32 +91,24 @@ namespace TabletApp.Pages
                             checkOutOrder.orderItems.Add(x);
 
                             totalPrice += price;
+
+                            x.paid = true;
                         }
                         else
                         {
                             checkOutOrder.orderItems.Remove(x);
 
                             totalPrice -= price;
+
+                            x.paid = false;
                         }
 
-                        updateTotalPrice();
+                        cpFullPrice.Text = "Total: $" + totalPrice.ToString();
                     };
 
                     cpScrollGridSwitch.Children.Add(newSwitch);
                 }
             }
-
-            cpCheckoutButton.Clicked += cpCheckoutButton_Clicked;
-        }
-
-        private async void cpCheckoutButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void updateTotalPrice()
-        {
-            cpFullPrice.Text = "Total: $" + totalPrice.ToString();
         }
     }
 }

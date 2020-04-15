@@ -61,6 +61,9 @@ namespace TabletApp.Pages
         {
             if (fullOrder.orderItems.Count() != 0)
             {
+                for (int i = 0; i < RealmManager.All<Table>().First().order_id.menuItems.Count(); i++)
+                    fullOrder.orderItems.Add(RealmManager.All<Table>().First().order_id.menuItems[i]);
+
                 await UpdateOrderMenuItemsRequest.SendUpdateOrderMenuItemsRequest(RealmManager.All<Table>().First().order_id._id, fullOrder.orderItems);
 
                 RealmManager.RemoveAll<OrderList>();

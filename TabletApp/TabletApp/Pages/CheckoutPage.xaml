@@ -64,6 +64,17 @@
 
             <StackLayout
                 Grid.Row="3"
+                Grid.Column="1">
+                <Entry
+                    x:Name="cpTip"
+                    Text=""
+                    Keyboard="Numeric"/>
+                <Label
+                    Text="Tip"/>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="3"
                 Grid.Column="2">
                 <Button
                     x:Name="cpCheckoutButton"
