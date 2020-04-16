@@ -13,6 +13,8 @@ using System.Net;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TabletApp.Models.ServiceRequests;
+using Xamarin.Essentials;
+using NuGet;
 
 /// <summary>
 /// Tests
@@ -25,12 +27,14 @@ namespace TabletTesting
     public class TabletTests
     {
         private HttpClient client = new HttpClient();
-        private TabletApp.Models.MenuList testRealm;
+        private TabletApp.Models.MenuList testMenuList;
 
         [SetUp]
-        async public Task Setup(){
-            await GetMenuItemsRequest.SendGetMenuItemsRequest();
-            testRealm = RealmManager.All<MenuList>().First();
+        public void Setup(){
+            //RealmManager.RemoveAll<MenuList>();
+            GetMenuItemsRequest.SendGetMenuItemsRequest();
+            
+            testMenuList = RealmManager.All<MenuList>().First();
         }
         ///Test List
         ///
@@ -44,6 +48,7 @@ namespace TabletTesting
         ///RefillButton_CorrectEmployeeId
         ///RefillButton_IncorrectEmployeeId
         ///CheckOut_MenuItemsAdd
+        ///CheckOut_MenuItemsRemove
 
         /// <summary>
         /// MakeServiceCall_CorrectObjectDeserialized
@@ -70,13 +75,12 @@ namespace TabletTesting
             catch (JsonException e) {
                 Assert.Fail("JsonSerializationException thrown");
             }
-
             Assert.Pass();
         }
         /// <summary>
         /// MakeServiceCall_IncorrectObjectDeserialized
         /// Tests to be sure an exception is thrown when
-        ///string is formated properly
+        ///string is formated improperly
         /// </summary>
         [Test]
         public void MakeServiceCall_IncorrectObjectDeserialized() {
@@ -173,8 +177,8 @@ namespace TabletTesting
         public void menuPage_ViewMenuItems(){
             //await GetMenuItemsRequest.SendGetMenuItemsRequest();
             
-            int menuItemCount = testRealm.menuItems.Count();
-            Assert.AreEqual(menuItemCount, 8);
+            int menuItemCount = testMenuList.menuItems.Count();
+            Assert.AreEqual(menuItemCount, 12);
             
         }
         
@@ -217,16 +221,12 @@ namespace TabletTesting
             OrderList testOrder = new OrderList();
 
             
-            //TabletApp.Models.MenuItem testItem = RealmManager.All<MenuList>().First().menuItems[0];
-            //TabletApp.Models.MenuItem testItem = testRealm.menuItems[0];
-
-            //testOrder.orderItems.Add(testItem);
-            TabletApp.Models.MenuItem testItem = testRealm.menuItems[0];
+            TabletApp.Models.MenuItem testItem = testMenuList.menuItems[0];
             TabletApp.Models.OrderItem testOrderItem = new OrderItem(testItem);
+            testOrder.orderItems.Add(testOrderItem);
+
             Assert.AreEqual(testOrder.orderItems[0].name, "Dijktra's Jalenpeno Poppers");
-            
-            
-            
+             
         }
 
         
@@ -235,7 +235,7 @@ namespace TabletTesting
             //await GetMenuItemsRequest.SendGetMenuItemsRequest();
 
             OrderList testOrder = new OrderList();
-            TabletApp.Models.MenuItem testItem = testRealm.menuItems[0];
+            TabletApp.Models.MenuItem testItem = testMenuList.menuItems[0];
             TabletApp.Models.OrderItem testOrderItem = new OrderItem(testItem);
 
             testOrder.orderItems.Add(testOrderItem);
