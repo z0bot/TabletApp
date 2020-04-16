@@ -15,6 +15,7 @@ using Xamarin.Forms.Xaml;
 using TabletApp.Models.ServiceRequests;
 using Xamarin.Essentials;
 using NuGet;
+using Realms;
 
 /// <summary>
 /// Tests
@@ -28,6 +29,7 @@ namespace TabletTesting
     {
         private HttpClient client = new HttpClient();
         private TabletApp.Models.MenuList testMenuList;
+        
 
         [SetUp]
         public void Setup(){
@@ -35,6 +37,7 @@ namespace TabletTesting
             GetMenuItemsRequest.SendGetMenuItemsRequest();
             
             testMenuList = RealmManager.All<MenuList>().First();
+
         }
         ///Test List
         ///
@@ -229,7 +232,11 @@ namespace TabletTesting
              
         }
 
-        
+        /// <summary>
+        /// CheckOut_MenuItemsRemove
+        /// Tests if Menu Items get removed
+        /// to orders correctly
+        /// </summary>
         [Test]
         public void CheckOut_MenuItemsRemove(){
             //await GetMenuItemsRequest.SendGetMenuItemsRequest();
@@ -244,7 +251,6 @@ namespace TabletTesting
             Assert.IsEmpty(testOrder.orderItems);
 
         }
-        
 
     }
 }
