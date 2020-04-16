@@ -15,11 +15,17 @@ namespace TabletApp.Pages
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class menuPage : ContentPage
 	{
-		public menuPage ()
+        public static menuPage _instance;
+        private Button checkOutButton;
+        public menuPage ()
 		{
 			InitializeComponent ();
 
             SetupMenuItems();
+
+            _instance = this;
+
+            OnReturn();
 
             if (RealmManager.All<OrderList>().Count() == 0) RealmManager.AddOrUpdate<OrderList>(new OrderList());
 
@@ -28,7 +34,54 @@ namespace TabletApp.Pages
             mpRefillButton.Clicked += mpRefillButton_Clicked;
             mpCallServerButton.Clicked += mpCallServerButton_Clicked;
         }
+        public static async void OnReturn()
+        {
+            bool unpaid = false;
 
+            await GetTableRequest.SendGetTableRequest(RealmManager.All<Table>().First().table_number);
+
+            for (int i = 0; i < RealmManager.All<Table>().First().order_id.menuItems.Count(); i++)
+            {
+                if (!RealmManager.All<Table>().First().order_id.menuItems[i].paid)
+                {
+                    unpaid = true;
+                    break;
+                }
+            }
+
+            if (unpaid)
+            {
+                if (_instance.checkOutButton == null)
+                {
+                    _instance.checkOutButton = new Button()
+                    {
+                        Margin = new Thickness(100, 0, 100, 0),
+                        Padding = new Thickness(0, 15, 0, 15),
+                        Text = "Pay Ticket",
+                        
+                        FontAttributes = FontAttributes.Bold,
+                        TextColor = Xamarin.Forms.Color.White,
+                        CornerRadius = 15,
+                        BackgroundColor = Xamarin.Forms.Color.FromHex("#24BF87")
+                    };
+
+                    _instance.checkOutButton.Clicked += uxCheckOutButton_Clicked;
+
+                    _instance.mpOrderConfirmation.Children.Add(_instance.checkOutButton);
+                }
+            }
+            else
+            {
+                if (_instance.checkOutButton != null) _instance.mpOrderConfirmation.Children.Remove(_instance.checkOutButton);
+
+                _instance.checkOutButton = null;
+            }
+        }
+        private static async void uxCheckOutButton_Clicked(object sender, EventArgs e)
+        {
+            await GetTableRequest.SendGetTableRequest(RealmManager.All<Table>().First().table_number);
+            await _instance.Navigation.PushAsync(new CheckoutPage());
+        }
         async void SetupMenuItems()
         {
             await GetMenuItemsRequest.SendGetMenuItemsRequest();

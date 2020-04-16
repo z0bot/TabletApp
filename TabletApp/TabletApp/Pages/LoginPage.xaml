@@ -9,6 +9,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -16,10 +18,22 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <Label
+                Grid.Row ="1"
+                Grid.Column="1"
+                Text="Enter the Table number"
+                BackgroundColor="Transparent"
+                FontAttributes="Bold"
+                FontSize="50">
+                
+            </Label>
+                
 
+
+           
             <StackLayout
                 x:Name="lpEntryStack"
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="1">
                 <Entry
                     x:Name="lpTableEntry"

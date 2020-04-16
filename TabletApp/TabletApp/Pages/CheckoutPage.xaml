@@ -48,6 +48,9 @@
                 Grid.Row="3">
                 <Label
                     x:Name="cpFullPrice"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    TextColor="Black"
                     Text="Total: $0.00"/>
             </StackLayout>
 
@@ -66,6 +69,10 @@
                 Grid.Column="1">
                 <Button
                     x:Name="cpAddCouponButton"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    BackgroundColor="#24BF87"
+                    CornerRadius="15"
                     Text="Add Coupon"/>
             </StackLayout>
 
@@ -73,6 +80,10 @@
                 Grid.Row="4"
                 Grid.Column="2">
                 <Button
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    BackgroundColor="#24BF87"
+                    CornerRadius="15"
                     x:Name="cpCheckoutButton"
                     Text="CheckOut"/>
             </StackLayout>
