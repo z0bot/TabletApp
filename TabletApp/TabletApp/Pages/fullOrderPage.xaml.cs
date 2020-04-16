@@ -31,23 +31,50 @@ namespace TabletApp.Pages
             {
                 OrderItem x = order.orderItems[i];
 
-                entreeScroll.Children.Add(new Label()
+                Grid newGrid = new Grid();
+                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+                newGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+                newGrid.Children.Add(new Label()
                 {
                     Text = x.name,
                     Margin = new Thickness(30, 0, 30, 15),
                     FontSize = 20,
                     WidthRequest = 100,
                     TextColor = Color.Black
-                });
+                }, 0, 0);
 
-                priceScroll.Children.Add(new Label()
+                newGrid.Children.Add(new Label()
                 {
                     Text = "$" + x.price,
                     Margin = new Thickness(30, 0, 30, 15),
                     FontSize = 20,
                     WidthRequest = 100,
                     TextColor = Color.Black
-                });
+                }, 1, 0);
+
+                Button deleteButton = new Button()
+                {
+                    Text = "Remove",
+                    TextColor = Xamarin.Forms.Color.White,
+                    BackgroundColor = Xamarin.Forms.Color.Red,
+                    Margin = new Thickness(50, 0, 50, 0),
+                    Padding = new Thickness(0, 15, 0, 15),
+                    CornerRadius = 15
+                };
+
+                deleteButton.Clicked += (sender, e) =>
+                {
+                    foScroll.Children.Remove(newGrid);
+                    fullOrder.orderItems.Remove(x);
+                    RealmManager.RemoveAll<OrderList>();
+                    RealmManager.AddOrUpdate<OrderList>(new OrderList(fullOrder));
+                };
+
+                newGrid.Children.Add(deleteButton, 2, 0);
+
+                foScroll.Children.Add(newGrid);
 
                 priceTotal += x.price;
 

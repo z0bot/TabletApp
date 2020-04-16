@@ -27,12 +27,15 @@ namespace TabletApp.Pages
 
             _instance = this;
 
+            uxTableNumButton.Text = "Table " + RealmManager.All<Table>().First().table_number;
+
             OnReturn();
 
             uxOrderButton.Clicked += uxOrderButton_Clicked;
             uxPlayButton.Clicked += UxPlayButton_Clicked;
             uxCallServerButton.Clicked += uxCallServerButton_Clicked;
             uxRefillButton.Clicked += uxRefillButton_Clicked;
+            uxRefreshTableButton.Clicked += uxRefreshTableButton_Clicked;
         }
 
         public static async void OnReturn()
@@ -77,6 +80,11 @@ namespace TabletApp.Pages
 
                 _instance.checkOutButton = null;
             }
+        }
+
+        private async void uxRefreshTableButton_Clicked(object sender, EventArgs e)
+        {
+            OnReturn();
         }
 
         private static async void uxCheckOutButton_Clicked(object sender, EventArgs e)

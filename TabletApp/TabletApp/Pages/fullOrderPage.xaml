@@ -23,34 +23,35 @@
                 x:Name="foEntrees"
                 Grid.Row="0"
                 Grid.RowSpan="4"
-                Grid.Column="0">
+                Grid.Column="0"
+                Grid.ColumnSpan="3">
                 <ScrollView>
                     <StackLayout
-                        x:Name="entreeScroll">
-                        <Label
+                        x:Name="foScroll">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label
                             Text="Entrees"
                             Margin="30, 30, 30, 30"
                             FontSize="Medium"
                             FontAttributes="Bold"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="1"
                             TextColor="Black"/>
-                    </StackLayout>
-                </ScrollView>
-            </StackLayout>
-
-            <StackLayout
-                x:Name="foPrices"
-                Grid.Row="0"
-                Grid.RowSpan="4"
-                Grid.Column="2">
-                <ScrollView>
-                    <StackLayout
-                        x:Name="priceScroll">
-                        <Label
+                            <Label
                             Text="Prices"
                             Margin="30, 30, 30, 30"
                             FontSize="Medium"
                             FontAttributes="Bold"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
                             TextColor="Black"/>
+                        </Grid>
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

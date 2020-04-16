@@ -119,6 +119,41 @@
                         Source="plusButton"/>
                 </StackLayout>
            </StackLayout>
+
+            <StackLayout
+                x:Name="uxRefreshStack"
+                Orientation="Horizontal"
+                Grid.Column="4"
+                Grid.ColumnSpan="1"
+                HorizontalOptions="EndAndExpand">
+                <StackLayout
+                    Spacing="0">
+                    <Button
+                        x:Name="uxRefreshTableButton"
+                        Text="Refresh"
+                        BackgroundColor="#24BF87"
+                        CornerRadius="15"
+                        HeightRequest="100"
+                        WidthRequest="100"/>
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout
+                x:Name="uxTableNum"
+                Orientation="Horizontal"
+                Grid.Column="0"
+                Grid.ColumnSpan="1">
+                <StackLayout
+                    Spacing="0">
+                    <Button
+                        x:Name="uxTableNumButton"
+                        Text="Table #"
+                        BackgroundColor="#24BF87"
+                        CornerRadius="15"
+                        HeightRequest="100"
+                        WidthRequest="100"/>
+                </StackLayout>
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 

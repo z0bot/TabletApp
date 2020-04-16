@@ -10,5 +10,16 @@ namespace TabletApp.Models
     public class OrderList : RealmObject
     {
         public IList<OrderItem> orderItems { get; }
+
+        public OrderList()
+        {
+
+        }
+
+        public OrderList(OrderList o)
+        {
+            for (int i = 0; i < o.orderItems.Count(); i++)
+                orderItems.Add(o.orderItems[i]);
+        }
     }
 }

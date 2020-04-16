@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using TabletApp.Models.ServiceRequests;
+
 namespace TabletApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -25,7 +27,10 @@ namespace TabletApp.Pages
         {
             if (((Button)sender).Text == winner.ToString())
             {
-                await DisplayAlert("Congratulations!", "Correct! The number was " + winner.ToString() + ".", "Yay!");
+                string code = await PostDessertCouponRequest.SendPostDessertCouponRequest();
+
+                await DisplayAlert("Congratulations!", "Correct! The number was " + winner.ToString() + ".\n" + 
+                                                       "Your Free Dessert coupon code : " + code, "Yay!");
                 // Print/email coupon
             }
             else

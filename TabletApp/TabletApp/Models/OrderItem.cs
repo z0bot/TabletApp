@@ -17,6 +17,8 @@ namespace TabletApp.Models
 
         public string _id { get; set; } // Original item's ID
 
+        public bool couponApplied { get; set; } = false;
+
         public string name { get; set; }
 
         //public string picture { get; set; }

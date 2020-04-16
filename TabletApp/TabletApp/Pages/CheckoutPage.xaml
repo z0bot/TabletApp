@@ -10,6 +10,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -18,12 +19,11 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-           
-
             <StackLayout
                 x:Name="cpOrder"
                 Grid.RowSpan="3"
-                Grid.Column="1">
+                Grid.Column="0"
+                Grid.ColumnSpan="3">
                 <ScrollView>
                     <StackLayout
                         x:Name="cpOrderScroll">
@@ -34,22 +34,11 @@
                                 FontSize="Medium"
                                 FontAttributes="Bold"
                                 TextColor="Black"/>
-                        <Grid
-                            x:Name="cpScrollGrid">
+                        <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-
-                            <StackLayout
-                                x:Name="cpScrollGridLabel">
-                            </StackLayout>
-
-                            <StackLayout
-                                x:Name="cpScrollGridSwitch"
-                                Grid.Column="1">
-                                
-                            </StackLayout>
                         </Grid>
                     </StackLayout>
                 </ScrollView>
@@ -63,8 +52,7 @@
             </StackLayout>
 
             <StackLayout
-                Grid.Row="3"
-                Grid.Column="1">
+                Grid.Row="4">
                 <Entry
                     x:Name="cpTip"
                     Text=""
@@ -74,7 +62,15 @@
             </StackLayout>
 
             <StackLayout
-                Grid.Row="3"
+                Grid.Row="4"
+                Grid.Column="1">
+                <Button
+                    x:Name="cpAddCouponButton"
+                    Text="Add Coupon"/>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="4"
                 Grid.Column="2">
                 <Button
                     x:Name="cpCheckoutButton"
