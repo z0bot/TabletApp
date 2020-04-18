@@ -15,7 +15,7 @@ namespace TabletApp.Models.ServiceRequests
         public override string Url { get; set; }
         //the type of request
         public override HttpMethod Method => HttpMethod.Put;
-
+        //Body of Updater Request
         public IList<UpdaterObject> Body;
 
         // Constructor containing menu items (order items) that need to be updated

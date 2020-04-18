@@ -85,19 +85,6 @@ namespace TabletApp.Pages
                 Navigation.InsertPageBefore(new RandomGamePage(), this);
             }
 
-            bool orderComplete = true;
-
-            for (int i = 0; i < RealmManager.All<Table>().First().order_id.menuItems.Count(); i++)
-            {
-                if (!RealmManager.All<Table>().First().order_id.menuItems[i].paid)
-                {
-                    orderComplete = false;
-                    break;
-                }
-            }
-
-            if (orderComplete) await FinishOrderRequest.SendFinishOrderRequest(RealmManager.All<Table>().First()._id);
-
             MainMenu.OnReturn();
             
             await Navigation.PopAsync();

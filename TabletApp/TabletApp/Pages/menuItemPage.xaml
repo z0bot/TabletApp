@@ -46,6 +46,27 @@
             </StackLayout>
 
             <StackLayout
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="30,0,30,0">
+                <Image
+                        x:Name="itemPic"
+                        WidthRequest="260"
+                        HeightRequest="300"
+                        HorizontalOptions="Center"
+                        Source="defaultEntree"/>
+                <ImageButton
+                        x:Name="nutritionButton"
+                        Source="detailsIcon"
+                        HeightRequest="60"
+                        WidthRequest="50"
+                        BackgroundColor="Transparent"
+                        
+                        HorizontalOptions="EndAndExpand"
+                        VerticalOptions="Center"/>
+            </StackLayout>
+
+            <StackLayout
                 x:Name="miOrderAddition"
                 Orientation="Horizontal"
                 Grid.Row="4"

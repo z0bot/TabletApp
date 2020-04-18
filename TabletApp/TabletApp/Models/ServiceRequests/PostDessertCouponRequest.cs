@@ -13,7 +13,7 @@ namespace TabletApp.Models.ServiceRequests
         public override string Url { get; set; } = "https://dijkstras-steakhouse-restapi.herokuapp.com/coupons";
         //the type of request
         public override HttpMethod Method => HttpMethod.Post;
-
+        //Body of coupon
         public SerializableCoupon Body;
 
         // Constructor containing the employee ID and tip amount to be sent
@@ -43,6 +43,7 @@ namespace TabletApp.Models.ServiceRequests
 
         }
 
+        //Class for ID Response
         public class IDResponse
         {
             public string _id;

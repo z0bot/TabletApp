@@ -14,11 +14,13 @@ namespace TabletApp.Models.ServiceRequests
         //the type of request
         public override HttpMethod Method => HttpMethod.Get;
 
+        //Constructor 
         public GetMenuItemsRequest()
         {
             Url = "https://dijkstras-steakhouse-restapi.herokuapp.com/menuItems";
         }
 
+        //Send Request for all menuItems
         public static async Task<bool> SendGetMenuItemsRequest()
         {
             //make a new request object

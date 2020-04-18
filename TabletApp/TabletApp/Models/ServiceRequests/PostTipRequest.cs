@@ -13,7 +13,7 @@ namespace TabletApp.Models.ServiceRequests
         public override string Url { get; set; }
         //the type of request
         public override HttpMethod Method => HttpMethod.Post;
-
+        //Body of Tip
         public TipObject Body;
 
         // Constructor containing the employee ID and tip amount to be sent

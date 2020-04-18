@@ -14,6 +14,7 @@ namespace TabletApp.Models.ServiceRequests
         //the type of request
         public override HttpMethod Method => HttpMethod.Get;
 
+        //Send request for list of all coupons
         public static async Task<bool> SendGetCouponsRequest()
         {
             //make a new request object

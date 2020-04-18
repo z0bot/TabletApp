@@ -9,6 +9,7 @@ namespace TabletApp.Models.ServiceRequests
 {
     class FinishOrderRequest : ServiceRequest
     {
+        //ID of table whose order is finished
         public string tableID;
         //the endpoint we are trying to hit
         public override string Url { get; set; }

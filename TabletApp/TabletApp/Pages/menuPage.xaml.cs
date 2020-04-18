@@ -34,6 +34,7 @@ namespace TabletApp.Pages
             mpRefillButton.Clicked += mpRefillButton_Clicked;
             mpCallServerButton.Clicked += mpCallServerButton_Clicked;
         }
+
         public static async void OnReturn()
         {
             bool unpaid = false;
@@ -77,11 +78,13 @@ namespace TabletApp.Pages
                 _instance.checkOutButton = null;
             }
         }
+
         private static async void uxCheckOutButton_Clicked(object sender, EventArgs e)
         {
             await GetTableRequest.SendGetTableRequest(RealmManager.All<Table>().First().table_number);
             await _instance.Navigation.PushAsync(new CheckoutPage());
         }
+
         async void SetupMenuItems()
         {
             await GetMenuItemsRequest.SendGetMenuItemsRequest();
@@ -125,18 +128,12 @@ namespace TabletApp.Pages
                     BackgroundColor = Xamarin.Forms.Color.FromHex("#24BF87"),
                 };
 
-                newButton.Clicked += async (sender, args) =>
-                {
-                    menuItemPage newPage = new menuItemPage(currItem);
-                    newPage.BackgroundImageSource = ImageSource.FromStream(() => new System.IO.MemoryStream(Convert.FromBase64String((currItem.picture.Split(',')[1]))));
-
-                    await Navigation.PushAsync(newPage);
-                };
+                newButton.Clicked += async (sender, args) => await Navigation.PushAsync(new menuItemPage(currItem));
 
                 if (currItem.category == "Entree") entreeScroll.Children.Add(newButton);
                 else if (currItem.category == "Appetizer") appScroll.Children.Add(newButton);
                 else if (currItem.category == "Drink") drinkScroll.Children.Add(newButton);
-                else if (currItem.category == "Side") sideScroll.Children.Add(newButton);
+                else if (currItem.category == "Sides") sideScroll.Children.Add(newButton);
                 else if (currItem.category == "Dessert") dessertScroll.Children.Add(newButton);
             }
         }

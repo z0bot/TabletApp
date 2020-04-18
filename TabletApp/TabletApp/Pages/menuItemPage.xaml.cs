@@ -30,6 +30,29 @@ namespace TabletApp.Pages
 
             miItemTitle.Text = menuItem.name;
             miItemDescription.Text = menuItem.description;
+
+            if (menuItem.category == "Entree") itemPic.Source = "defaultEntree";
+            else if (menuItem.category == "Appetizer") itemPic.Source = "defaultApp";
+            else if (menuItem.category == "Drink") itemPic.Source = "defaultDrinks";
+            else if (menuItem.category == "Sides") itemPic.Source = "defaultSides";
+            else if (menuItem.category == "Dessert") itemPic.Source = "defaultDessert";
+
+            try
+            {
+                if (menuItem.picture.Contains(',')) // Old images which contain commas
+                {
+                    itemPic.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(Convert.FromBase64String((menuItem.picture.Split(',')[1]))));
+                }
+                else // New images without commas
+                {
+                    itemPic.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(Convert.FromBase64String((menuItem.picture))));
+                }
+            }
+            catch (Exception ex)
+            {
+                // Can't do anything about this tbqh
+                System.Diagnostics.Debug.WriteLine("Invalid picture. Message: " + ex.Message);
+            }
         }
 
         private async void miAddToOrder_Clicked(object sender, EventArgs e)

@@ -9,12 +9,14 @@ namespace TabletApp.Models.ServiceRequests
 {
     class GetCouponsByIDRequest : ServiceRequest
     {
+        //Find Coupon based on ID given
         public string ID;
         //the endpoint we are trying to hit
         public override string Url { get; set; }
         //the type of request
         public override HttpMethod Method => HttpMethod.Get;
 
+        //Constructor
         GetCouponsByIDRequest(string couponID)
         {
             ID = couponID;
@@ -22,6 +24,7 @@ namespace TabletApp.Models.ServiceRequests
             Url = "https://dijkstras-steakhouse-restapi.herokuapp.com/coupons/" + ID;
         }
 
+        //Send Request for given coupon
         public static async Task<bool> SendGetCouponsByIDRequest(string ID)
         {
             //make a new request object

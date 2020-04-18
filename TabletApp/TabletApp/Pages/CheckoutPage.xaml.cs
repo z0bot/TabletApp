@@ -36,6 +36,19 @@ namespace TabletApp.Pages
             cpCheckoutButton.Clicked += cpCheckoutButton_Clicked;
         }
 
+        private async void getRestrauntCoupons()
+        {
+            await GetCouponsRequest.SendGetCouponsRequest();
+
+            for (int i = 0; i < RealmManager.All<CouponsList>().First().Coupons.Count(); i++)
+            {
+                if (RealmManager.All<CouponsList>().First().Coupons[i].couponType == "Restaurant")
+                {
+                    coupons.Add(new Coupon(RealmManager.All<CouponsList>().First().Coupons[i]));
+                }
+            }
+        }
+
         private async void cpAddCouponButton_Clicked(object sender, EventArgs e)
         {
             string input = "";
@@ -74,7 +87,23 @@ namespace TabletApp.Pages
             await PostTipRequest.SendPostTipRequest(order.employee_id, tip);
 
             for (int i = 0; i < coupons.Count(); i++)
-                await DeactivateCouponRequest.SendDeactivateCouponRequest(coupons[i]._id);
+                if (coupons[i].couponType == "Customer")
+                    await DeactivateCouponRequest.SendDeactivateCouponRequest(coupons[i]._id);
+
+            bool orderComplete = true;
+
+            await GetTableRequest.SendGetTableRequest(RealmManager.All<Table>().First().table_number);
+
+            for (int i = 0; i < RealmManager.All<Table>().First().order_id.menuItems.Count(); i++)
+            {
+                if (!RealmManager.All<Table>().First().order_id.menuItems[i].paid && !RealmManager.All<Table>().First().order_id.menuItems[i].prepared)
+                {
+                    orderComplete = false;
+                    break;
+                }
+            }
+
+            if (orderComplete) await FinishOrderRequest.SendFinishOrderRequest(RealmManager.All<Table>().First()._id);
 
             await Navigation.PushAsync(new PaymentPage(totalPrice, tip));
         }
@@ -120,7 +149,7 @@ namespace TabletApp.Pages
 
                     Label newLabel = new Label()
                     {
-                        Text = x.name + " --- " + x.price,
+                        Text = x.name + " --- " + x.price.ToString("C"),
                         Margin = new Thickness(30, 0, 30, 15),
                         FontSize = 20,
                         WidthRequest = 100,
@@ -159,7 +188,7 @@ namespace TabletApp.Pages
 
                             x.paid = false;
 
-                            newLabel.TextColor = Xamarin.Forms.Color.White;
+                            newLabel.TextColor = Xamarin.Forms.Color.Black;
                         }
 
                         if (discount > 0)

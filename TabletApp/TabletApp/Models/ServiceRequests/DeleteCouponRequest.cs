@@ -9,12 +9,14 @@ namespace TabletApp.Models.ServiceRequests
 {
     class DeactivateCouponRequest : ServiceRequest
     {
+        //ID of coupon used
         string couponID;
         //the endpoint we are trying to hit
         public override string Url { get; set; }
         //the type of request
         public override HttpMethod Method => HttpMethod.Put;
 
+        //Body of request
         public IList<UpdaterObject> Body;
 
         // Constructor containing the order ID to be sent
