@@ -41,11 +41,13 @@ namespace TabletApp.Pages
             {
                 if (menuItem.picture.Contains(',')) // Old images which contain commas
                 {
-                    itemPic.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(Convert.FromBase64String((menuItem.picture.Split(',')[1]))));
+                    string s = menuItem.picture.Split(',')[1];
+                    itemPic.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(Convert.FromBase64String(s)));
                 }
                 else // New images without commas
                 {
-                    itemPic.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(Convert.FromBase64String((menuItem.picture))));
+                    string s = menuItem.picture;
+                    itemPic.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(Convert.FromBase64String((s))));
                 }
             }
             catch (Exception ex)

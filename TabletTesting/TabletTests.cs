@@ -33,10 +33,8 @@ namespace TabletTesting
 
         [SetUp]
         public void Setup(){
-            //RealmManager.RemoveAll<MenuList>();
-            GetMenuItemsRequest.SendGetMenuItemsRequest();
+            RealmManager.RemoveAll<MenuList>();
             
-            testMenuList = RealmManager.All<MenuList>().First();
 
         }
         ///Test List
@@ -116,7 +114,7 @@ namespace TabletTesting
         /// status code
         /// </summary>
         [Test]
-        async public Task MakeServiceCall_HttpResponse_Success() {
+        public void MakeServiceCall_HttpResponse_Success() {
             //Create Http request with correct URL
             HttpMethod testMethod = new HttpMethod("GET");
             HttpRequestMessage testRequest = new HttpRequestMessage(testMethod,
@@ -124,7 +122,8 @@ namespace TabletTesting
             CancellationToken testToken = new CancellationToken(false);
 
             //Make request
-            HttpResponseMessage response = await client.SendAsync(testRequest);
+            HttpResponseMessage response = new HttpResponseMessage();
+            Task.Run(() => response = client.SendAsync(testRequest).Result);
             //Success is response is successful
             if (response.IsSuccessStatusCode) { Assert.Pass(); }
             else { Assert.Fail(); }
@@ -137,7 +136,7 @@ namespace TabletTesting
         /// NotFound stutus code
         /// </summary>
         [Test]
-        async public Task MakeServiceCall_HttpResponse_NotFound() {
+         public void MakeServiceCall_HttpResponse_NotFound() {
             //Create Http request with correct URL
             HttpMethod testMethod = new HttpMethod("GET");
             //URL adjusted to be incorrect (i.e. not part of the server)
@@ -146,7 +145,8 @@ namespace TabletTesting
             CancellationToken testToken = new CancellationToken(false);
 
             //Make request
-            HttpResponseMessage response = await client.SendAsync(testRequest);
+            HttpResponseMessage response = new HttpResponseMessage();
+            Task.Run(() => response = client.SendAsync(testRequest).Result);
             //Success if status code is 404
             Assert.AreEqual((int)response.StatusCode, 404);
 
@@ -178,7 +178,7 @@ namespace TabletTesting
         
         [Test]
         public void menuPage_ViewMenuItems(){
-            //await GetMenuItemsRequest.SendGetMenuItemsRequest();
+            Task.Run(() => GetMenuItemsRequest.SendGetMenuItemsRequest());
             
             int menuItemCount = testMenuList.menuItems.Count();
             Assert.AreEqual(menuItemCount, 12);
@@ -194,8 +194,9 @@ namespace TabletTesting
         /// </summary>
         /// <returns></returns>
         [Test]
-        async public Task RefillButton_CorrectEmployeeId(){
-            bool testResponse = await AddNotificationRequest.SendAddNotificationRequest("5e8e6d4b9696520004639e73", "1", "Refill");
+        public void RefillButton_CorrectEmployeeId(){
+            bool testResponse = new bool();
+            Task.Run(() => testResponse = AddNotificationRequest.SendAddNotificationRequest("5e8e6d4b9696520004639e73", "Table 1", "Refill").Result);
             Assert.IsTrue(testResponse);
         }
 
@@ -207,8 +208,9 @@ namespace TabletTesting
         /// </summary>
         /// <returns></returns>
         [Test]
-        async public Task RefillButton_IncorrectEmployeeId(){
-            bool testResponse = await AddNotificationRequest.SendAddNotificationRequest("05e8e6d4b9696520004639e73", "1", "Refill");
+        public void RefillButton_IncorrectEmployeeId(){
+            bool testResponse = new bool();
+            Task.Run(() => testResponse = AddNotificationRequest.SendAddNotificationRequest("05e8e6d4b9696520004639e73", "Table 1", "Refill").Result);
             Assert.IsTrue(!testResponse);
         }
 
@@ -220,7 +222,10 @@ namespace TabletTesting
         /// <returns></returns>
         [Test]
         public void CheckOut_MenuItemsAdd(){
-            //await GetMenuItemsRequest.SendGetMenuItemsRequest();
+            Task.Run(() => GetMenuItemsRequest.SendGetMenuItemsRequest()).Wait();
+
+            testMenuList = RealmManager.All<MenuList>().FirstOrDefault();
+
             OrderList testOrder = new OrderList();
 
             
@@ -239,7 +244,7 @@ namespace TabletTesting
         /// </summary>
         [Test]
         public void CheckOut_MenuItemsRemove(){
-            //await GetMenuItemsRequest.SendGetMenuItemsRequest();
+            Task.Run(() => GetMenuItemsRequest.SendGetMenuItemsRequest());
 
             OrderList testOrder = new OrderList();
             TabletApp.Models.MenuItem testItem = testMenuList.menuItems[0];
