@@ -43,6 +43,15 @@
                                 FontAttributes="Bold"
                                 TextColor="Black"/>
                         </StackLayout>
+                        <StackLayout
+                            x:Name="kidsScroll">
+                            <Label
+                                Text="Kid's Meals"
+                                Margin="30, 30, 30, 30"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
@@ -76,6 +85,15 @@
                             x:Name="dessertScroll">
                             <Label
                             Text="Dessert"
+                            Margin="30, 30, 30, 30"
+                            FontSize="Medium"
+                            FontAttributes="Bold"
+                            TextColor="Black"/>
+                        </StackLayout>
+                        <StackLayout
+                            x:Name="otherScroll">
+                            <Label
+                            Text="Misc"
                             Margin="30, 30, 30, 30"
                             FontSize="Medium"
                             FontAttributes="Bold"

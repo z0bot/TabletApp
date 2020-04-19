@@ -105,13 +105,18 @@ namespace TabletApp.Pages
 
                 for(int j = 0; j < currItem.ingredients.Count(); j++)
                 {
-                    IList<Ingredient>  ingredients = ingredientList.doc.Where((Ingredient ing) => (ing._id == currItem.ingredients[j]._id)).ToList<Ingredient>();
+                    IList<Ingredient>ingredients = ingredientList.doc.Where((Ingredient ing) => (ing._id == currItem.ingredients[j]._id)).ToList<Ingredient>();
 
-                    if (ingredients.Count() == 0)
+                    for (int k = 0; k < ingredients.Count(); k++)
                     {
-                        available = false;
-                        break;
+                        if (ingredients[k].quantity == 0)
+                        {
+                            available = false;
+                            break;
+                        }
                     }
+
+                    if (!available) break;
                 }
 
                 if (!available) continue;
@@ -130,11 +135,13 @@ namespace TabletApp.Pages
 
                 newButton.Clicked += async (sender, args) => await Navigation.PushAsync(new menuItemPage(currItem));
 
-                if (currItem.category == "Entree") entreeScroll.Children.Add(newButton);
-                else if (currItem.category == "Appetizer") appScroll.Children.Add(newButton);
-                else if (currItem.category == "Drink") drinkScroll.Children.Add(newButton);
+                if (currItem.category == "Entrees") entreeScroll.Children.Add(newButton);
+                else if (currItem.category == "Appetizers") appScroll.Children.Add(newButton);
+                else if (currItem.category == "Kids Meals") kidsScroll.Children.Add(newButton);
+                else if (currItem.category == "Drinks") drinkScroll.Children.Add(newButton);
                 else if (currItem.category == "Sides") sideScroll.Children.Add(newButton);
-                else if (currItem.category == "Dessert") dessertScroll.Children.Add(newButton);
+                else if (currItem.category == "Desserts") dessertScroll.Children.Add(newButton);
+                else otherScroll.Children.Add(newButton);
             }
         }
 
