@@ -20,6 +20,10 @@ namespace TabletApp.Pages
             RealmManager.RemoveAll<Models.KidsLoc>();
             enterpin();
         }
+        protected override bool OnBackButtonPressed() {
+            return true;
+        }
+        
 
         public gamepage(int temp)
         {

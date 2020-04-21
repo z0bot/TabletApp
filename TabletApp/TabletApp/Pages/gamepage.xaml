@@ -5,7 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              BackgroundImageSource="baseBackground"
-             x:Class="TabletApp.Pages.gamepage">
+             x:Class="TabletApp.Pages.gamepage"
+             NavigationPage.HasBackButton="False"
+             >
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
