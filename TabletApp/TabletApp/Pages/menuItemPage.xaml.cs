@@ -30,6 +30,8 @@ namespace TabletApp.Pages
 
             miItemTitle.Text = menuItem.name;
             miItemDescription.Text = menuItem.description;
+            miItemNutrition.Text = menuItem.nutrition;
+            miItemPrice.Text = menuItem.price.ToString("C");
 
             if (menuItem.category == "Entree") itemPic.Source = "defaultEntree";
             else if (menuItem.category == "Appetizer") itemPic.Source = "defaultApp";

@@ -35,6 +35,17 @@
                     VerticalTextAlignment="Center"
                     Text="MENU ITEM DESCRIPTION"/>
                 <Label
+                    x:Name="miItemNutrition"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    VerticalTextAlignment="Center"
+                    Text="MENU ITEM NUTRITION"/>
+                <Label
+                    x:Name="miItemPrice"
+                    FontSize="Medium"
+                    VerticalTextAlignment="Center"
+                    Text="MENU ITEM PRICE"/>
+                <Label
                     FontAttributes="Bold"
                     FontSize="Medium"
                     VerticalTextAlignment="Center"
