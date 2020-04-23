@@ -141,6 +141,7 @@ namespace TabletApp.Pages
                 else if (currItem.category == "Drinks") drinkScroll.Children.Add(newButton);
                 else if (currItem.category == "Sides") sideScroll.Children.Add(newButton);
                 else if (currItem.category == "Desserts") dessertScroll.Children.Add(newButton);
+                else if (currItem.category == "$5 Meal Deals") fiveMealScroll.Children.Add(newButton);
                 else otherScroll.Children.Add(newButton);
             }
         }

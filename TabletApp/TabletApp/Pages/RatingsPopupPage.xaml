@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             mc:Ignorable="d"
+             x:Class="TabletApp.Pages.RatingsPopupPage">
+
+    <popup:PopupPage.Content>
+        <ScrollView>
+            <Grid
+        HeightRequest="-1"
+        WidthRequest="-1"
+        Margin="10,50,10,0"
+        HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Frame
+            BackgroundColor="#f5f5f5"
+            Grid.Row="0">
+                    <StackLayout
+                Margin="0,40,0,0"
+                Orientation="Vertical">
+                        <Label
+                            Text="Tell us how we did!"
+                            Margin="0,0,0,50"
+                            TextColor="Fuchsia"
+                            FontSize="23"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="Center"/>
+                        <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                            <ImageButton
+                        x:Name="uxQ1RatingButton1"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ1RatingButton1_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ1RatingButton2"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ1RatingButton2_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ1RatingButton3"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ1RatingButton3_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ1RatingButton4"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ1RatingButton4_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ1RatingButton5"
+                        WidthRequest="40"
+                        BackgroundColor="Transparent"
+                        HeightRequest="40"
+                        Clicked="uxQ1RatingButton5_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                        </StackLayout>
+                        <Entry
+                    x:Name="uxQ1UserReview"
+                    Margin="0,40,0,0"
+                    Placeholder="We'll take compliments for free!"
+                    >
+                        </Entry>
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+            BackgroundColor="#f5f5f5"
+            Grid.Row="2">
+                    <StackLayout
+                Margin="0,40,0,0"
+                Orientation="Vertical">
+                        <Label
+                            Text="Rate your experience with our waitstaff!"
+                            Margin="0,0,0,50"
+                            TextColor="Fuchsia"
+                            FontSize="23"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="Center"/>
+                        <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                            <ImageButton
+                        x:Name="uxQ2RatingButton1"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ2RatingButton1_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ2RatingButton2"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ2RatingButton2_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ2RatingButton3"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ2RatingButton3_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ2RatingButton4"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ2RatingButton4_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ2RatingButton5"
+                        WidthRequest="40"
+                        BackgroundColor="Transparent"
+                        HeightRequest="40"
+                        Clicked="uxQ2RatingButton5_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                        </StackLayout>
+                        <Entry
+                    x:Name="uxQ2UserReview"
+                    Margin="0,40,0,0"
+                    Placeholder="In case you can't say it to their face."
+                    >
+                        </Entry>
+                    </StackLayout>
+                </Frame>
+
+                <Frame
+            BackgroundColor="#f5f5f5"
+            Grid.Row="4">
+                    <StackLayout
+                Margin="0,40,0,0"
+                Orientation="Vertical">
+                        <Label
+                            Text="How was the food?"
+                            Margin="0,0,0,50"
+                            TextColor="Fuchsia"
+                            FontSize="23"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="Center"/>
+                        <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
+                            <ImageButton
+                        x:Name="uxQ3RatingButton1"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ3RatingButton1_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ3RatingButton2"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ3RatingButton2_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ3RatingButton3"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ3RatingButton3_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ3RatingButton4"
+                        BackgroundColor="Transparent"
+                        WidthRequest="40"
+                        HeightRequest="40"
+                        Clicked="uxQ3RatingButton4_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                            <ImageButton
+                        x:Name="uxQ3RatingButton5"
+                        WidthRequest="40"
+                        BackgroundColor="Transparent"
+                        HeightRequest="40"
+                        Clicked="uxQ3RatingButton5_Clicked"
+                        Source="greyStar.jpeg"
+                        />
+                        </StackLayout>
+                        <Entry
+                    x:Name="uxQ3UserReview"
+                    Margin="0,40,0,0"
+                    Placeholder="Don't worry, it can't hear you now."
+                    >
+                        </Entry>
+                        <StackLayout
+                Orientation="Horizontal">
+                            <Button
+                    x:Name="uxDeclineBtn"
+                    HorizontalOptions="Start"
+                    Clicked="uxDeclineBtn_Clicked"
+                    BackgroundColor="Transparent"
+                    TextColor="Blue"
+                    Text="No thanks">
+                            </Button>
+                            <Button
+                    x:Name="uxSubmitBtn"
+                    Clicked="uxSubmitBtn_Clicked"
+                    HorizontalOptions="EndAndExpand"
+                    BackgroundColor="Transparent"
+                    TextColor="Blue"
+                    Text="Submit">
+                            </Button>
+                        </StackLayout>
+                    </StackLayout>
+
+                </Frame>
+
+
+            </Grid>
+
+
+
+        </ScrollView>
+    </popup:PopupPage.Content>
+</popup:PopupPage>

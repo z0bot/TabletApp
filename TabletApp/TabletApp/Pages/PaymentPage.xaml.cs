@@ -11,6 +11,7 @@ using Xamarin.Forms.Xaml;
 using TabletApp;
 using TabletApp.Models;
 using TabletApp.Models.ServiceRequests;
+using Rg.Plugins.Popup.Services;
 
 namespace TabletApp.Pages
 {
@@ -84,6 +85,8 @@ namespace TabletApp.Pages
             {
                 Navigation.InsertPageBefore(new RandomGamePage(), this);
             }
+
+            await Task.Run(async () => await PopupNavigation.Instance.PushAsync(new RatingsPopupPage()));
 
             MainMenu.OnReturn();
             

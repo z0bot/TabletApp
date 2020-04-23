@@ -28,7 +28,7 @@ namespace TabletApp.Pages
             mpRefillButton.Clicked += mpRefillButton_Clicked;
             mpCallServerButton.Clicked += mpCallServerButton_Clicked;
 
-            miItemTitle.Text = menuItem.name;
+            miItemTitle.Text = (menuItem.isHot) ? menuItem.name + "🔥" : menuItem.name;
             miItemDescription.Text = menuItem.description;
             miItemNutrition.Text = menuItem.nutrition;
             miItemPrice.Text = menuItem.price.ToString("C");

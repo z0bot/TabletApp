@@ -52,6 +52,15 @@
                                 FontAttributes="Bold"
                                 TextColor="Black"/>
                         </StackLayout>
+                        <StackLayout
+                            x:Name="fiveMealScroll">
+                            <Label
+                                Text="$5 Meals"
+                                Margin="30, 30, 30, 30"
+                                FontSize="Medium"
+                                FontAttributes="Bold"
+                                TextColor="Black"/>
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

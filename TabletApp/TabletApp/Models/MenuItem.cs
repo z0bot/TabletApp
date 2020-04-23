@@ -22,5 +22,6 @@ namespace TabletApp.Models
         public string item_type { get; set; }
         public string category { get; set; }
         public bool paid { get; set; }
+        public bool isHot { get; set; }
     }
 }
